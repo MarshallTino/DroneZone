@@ -1,3 +1,8 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+
+
 *,
 *::before,
 *::after {
@@ -20,6 +25,11 @@ button {
   border: none;
 }
 
+body{
+  font-family:var(--primary-font);
+  background-color:var(--background-color)
+}
+
 :root {
   --color-primary: #ffffff;
   --color-secondary: #ddc916;
@@ -40,13 +50,5 @@ button {
   border: none;
 }
 
-:root {
-  --color-primary: #ffffff;
-  --color-secondary: #cccf18;
-  --color-tertiary: #f3949a;
-  --background-color: #1e1e1e;
-
-  --primary-font: "Roboto";
-  --secondary-font: "Saira Stencil One";
-  background-color: var(--background-color);
-}
+`;
+export default GlobalStyles;
