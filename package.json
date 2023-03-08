@@ -66,8 +66,7 @@
       "!src/App.tsx",
       "!src/index.ts",
       "!src/index.tsx",
-      "!src/store/hooks.ts",
-      "!src/store/index.ts"
+      "!src/store/hooks.ts"
     ]
   }
 }
