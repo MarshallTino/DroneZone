@@ -25,8 +25,8 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "test:coverage": "react-scripts test --coverage --watchAll=false --passWithNoTests",
-    "test": "react-scripts test --passWithNoTests"
+    "test:coverage": "react-scripts test --coverage --watchAll=false ",
+    "test": "react-scripts test "
   },
   "eslintConfig": {
     "extends": [
@@ -50,5 +50,17 @@
     "husky": "^8.0.0",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "!src/setUpTest.ts",
+      "!src/App.tsx",
+      "!src/index.ts",
+      "!src/index.tsx",
+      "!src/store/hooks.ts",
+      "!src/store/index.ts"
+    ]
   }
 }
