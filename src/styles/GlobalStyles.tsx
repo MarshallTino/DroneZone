@@ -10,6 +10,8 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 
+body{padding:10px}
+
 ul,
 li {
   list-style: none;
@@ -25,21 +27,8 @@ button {
   border: none;
 }
 
-body{
-  font-family:var(--primary-font);
-  background-color:var(--background-color)
-}
+h1,h2,h3{margin:0}
 
-:root {
-  --color-primary: #ffffff;
-  --color-secondary: #ddc916;
-  --color-tertiary: #262627;
-  --background-color: #565656;
-
-  --primary-font: "Nunito Sans";
-  --secondary-font: "Exo 2";
-  background-color: var(--background-color);
-}
 
 a {
   color: inherit;
