@@ -1,6 +1,6 @@
+import jwt_decode from "jwt-decode";
 import { useAppDispatch } from "../../store/hooks";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
-import jwt_decode from "jwt-decode";
 import { loginUserActionCreator } from "../../store/userSlice/userSlice";
 
 export interface UseUserStructure {
