@@ -50,6 +50,7 @@ const LoginFormStyled = styled.div`
       text-align: center;
       font-size: 16px;
       padding: 10px;
+      font-weight: 400;
     }
   }
 `;
