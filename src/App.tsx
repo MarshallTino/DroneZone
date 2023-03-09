@@ -1,8 +1,7 @@
 import React from "react";
-import LoginForm from "./components/loginForm/loginForm";
 
 function App() {
-  return <LoginForm />;
+  return <h1>DroneZone</h1>;
 }
 
 export default App;

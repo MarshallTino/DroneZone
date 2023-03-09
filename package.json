@@ -63,10 +63,7 @@
       "src/**/*.ts",
       "src/**/*.tsx",
       "!src/setupTests.ts",
-      "!src/App.tsx",
-      "!src/index.ts",
-      "!src/index.tsx",
-      "!src/store/hooks.ts"
+      "!src/index.tsx"
     ]
   }
 }

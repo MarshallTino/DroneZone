@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useUser from "../../hooks/useUser/useuser";
+import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import LoginFormStyled from "./loginFormStyled";
 
@@ -25,12 +25,12 @@ const LoginForm = (): JSX.Element => {
       <form className="login__form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="username"
+          placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button className="login__button" text="sign in" disabled={false} />

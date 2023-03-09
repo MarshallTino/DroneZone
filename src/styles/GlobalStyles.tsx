@@ -30,14 +30,5 @@ button {
 h1,h2,h3{margin:0}
 
 
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-button {
-  border: none;
-}
-
 `;
 export default GlobalStyles;
