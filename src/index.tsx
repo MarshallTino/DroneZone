@@ -14,8 +14,8 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
       <Provider store={store}>
+        <GlobalStyles />
         <App />
       </Provider>
     </ThemeProvider>

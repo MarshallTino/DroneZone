@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
-import Wrapper from "../../mocks/Wrapper";
+import Wrapper from "../../utils/testUtils/Wrapper";
 import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { CustomTokenPayload, UserCredentials } from "./types";

@@ -1,7 +1,7 @@
 import { act, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import theme from "../../styles/Theme";
-import renderWithProviders from "../../utils/testUtils";
+import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import LoginForm from "./loginForm";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
