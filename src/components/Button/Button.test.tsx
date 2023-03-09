@@ -41,7 +41,7 @@ describe("Given a Button component", () => {
       const genericButton = screen.getByRole("button", {
         name: "primary",
       });
-      expect(genericButton).toBeInTheDocument();
+
       await userEvent.click(genericButton);
       expect(action).toHaveBeenCalled();
     });
