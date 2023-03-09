@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import "@fontsource/nunito-sans";
 import "@fontsource/exo-2";
-import { store } from "./store";
+import { store } from "./store/store";
 import GlobalStyles from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/Theme";
