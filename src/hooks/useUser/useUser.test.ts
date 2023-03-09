@@ -1,10 +1,10 @@
 import { act, renderHook } from "@testing-library/react";
 import decodeToken from "jwt-decode";
 import Wrapper from "../../mocks/Wrapper";
+import { User } from "../../store/features/user/types";
+import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { CustomTokenPayload, UserCredentials } from "./types";
 import useUser from "./useUser";
-import { User } from "../../store/userSlice/types";
-import { loginUserActionCreator } from "../../store/userSlice/userSlice";
 
 beforeAll(() => {
   jest.clearAllMocks();

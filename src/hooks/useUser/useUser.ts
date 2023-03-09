@@ -1,7 +1,7 @@
 import jwt_decode from "jwt-decode";
+import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
-import { loginUserActionCreator } from "../../store/userSlice/userSlice";
 
 export interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
