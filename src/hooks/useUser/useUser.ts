@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import { showErrorToast } from "../../modals/modals";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
@@ -12,20 +13,23 @@ const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
 
   const loginUser = async (userCredentials: UserCredentials) => {
-    const response = await fetch(`${apiUrl}/user/login`, {
-      method: "POST",
-      body: JSON.stringify(userCredentials),
-      headers: { "Content-type": "application/json" },
-    });
+    try {
+      const response = await fetch(`${apiUrl}/user/login`, {
+        method: "POST",
+        body: JSON.stringify(userCredentials),
+        headers: { "Content-type": "application/json" },
+      });
+      const { token } = (await response.json()) as LoginResponse;
 
-    const { token } = (await response.json()) as LoginResponse;
+      const tokenPayload: CustomTokenPayload = jwt_decode(token);
 
-    const tokenPayload: CustomTokenPayload = jwt_decode(token);
+      const { email, id } = tokenPayload;
 
-    const { email, id } = tokenPayload;
-
-    dispatch(loginUserActionCreator({ email, id, token }));
-    localStorage.setItem("token", token);
+      dispatch(loginUserActionCreator({ email, id, token }));
+      localStorage.setItem("token", token);
+    } catch {
+      showErrorToast("Invalid credentials");
+    }
   };
 
   return { loginUser };

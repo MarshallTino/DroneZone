@@ -5,16 +5,25 @@ import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { CustomTokenPayload, UserCredentials } from "./types";
 import useUser from "./useUser";
+import { store } from "../../store/store";
+import { server } from "../../mocks/server";
+import { errorHandlers } from "../../mocks/handlers";
 
 beforeAll(() => {
   jest.clearAllMocks();
 });
 
-const mockDispatcher = jest.fn();
+afterEach(() => {
+  jest.clearAllMocks();
+});
 
-jest.mock("../../store/hooks", () => ({
-  ...jest.requireActual("../../store/hooks"),
-  useAppDispatch: () => mockDispatcher,
+const spy = jest.spyOn(store, "dispatch");
+
+const mockShowErrorToast = jest.fn();
+
+jest.mock("../../modals/modals", () => ({
+  ...jest.requireActual("../../modals/modals"),
+  showErrorToast: () => mockShowErrorToast("Invalids credentials"),
 }));
 
 jest.mock("jwt-decode", () => jest.fn());
@@ -53,9 +62,32 @@ describe("Given a useUser hook", () => {
       };
 
       await act(async () => loginUser(userCredentials));
-      expect(mockDispatcher).toHaveBeenCalledWith(
-        loginUserActionCreator(mockedUser)
+      expect(spy).toHaveBeenCalledWith(loginUserActionCreator(mockedUser));
+    });
+  });
+
+  describe("When its loginUser function is called with the worng credentials email 'marcelmartino2053@gmail.com' and the password 'Marcelus'", () => {
+    test("Then the function showErrorToast should be called", async () => {
+      server.use(...errorHandlers);
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: Wrapper,
+      });
+
+      (decodeToken as jest.MockedFunction<typeof decodeToken>).mockReturnValue(
+        mockTokenPayload
       );
+
+      const userCredentialss: UserCredentials = {
+        email: "marcelmartino2053@gmail.com",
+        password: "MarshalTino",
+      };
+
+      await act(async () => loginUser(userCredentialss));
+      expect(mockShowErrorToast).toHaveBeenCalledWith("Invalids credentials");
     });
   });
 });
