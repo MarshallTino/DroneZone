@@ -15,3 +15,9 @@ export const handlers = [
     );
   }),
 ];
+
+export const errorHandlers = [
+  rest.post(`${apiUrl}${routes.user}${routes.login}`, async (req, res, ctx) => {
+    return res(ctx.status(401));
+  }),
+];
