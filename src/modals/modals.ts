@@ -1,13 +1,26 @@
 import "react-toastify/dist/ReactToastify.css";
-import { toast } from "react-toastify";
+import { toast, ToastOptions } from "react-toastify";
 
-export const showErrorToast = (message: string) => {
-  toast.error(message, {
+interface showToastProps {
+  message: string;
+  type: "error" | "warning" | "success";
+}
+
+export const showToast = ({ message, type }: showToastProps) => {
+  const toastConfiguration: ToastOptions = {
     position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     progress: undefined,
     theme: "dark",
-  });
+  };
+
+  if (type === "error") {
+    return toast.error(message, { ...toastConfiguration });
+  } else if (type === "warning") {
+    return toast.warning(message, toastConfiguration);
+  } else if (type === "success") {
+    return toast.success(message, toastConfiguration);
+  }
 };

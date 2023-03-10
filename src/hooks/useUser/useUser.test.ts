@@ -19,11 +19,11 @@ afterEach(() => {
 
 const spy = jest.spyOn(store, "dispatch");
 
-const mockShowErrorToast = jest.fn();
+const mockShowToast = jest.fn();
 
 jest.mock("../../modals/modals", () => ({
   ...jest.requireActual("../../modals/modals"),
-  showErrorToast: () => mockShowErrorToast("Invalids credentials"),
+  showToast: () => mockShowToast("Invalids credentials"),
 }));
 
 jest.mock("jwt-decode", () => jest.fn());
@@ -68,7 +68,7 @@ describe("Given a useUser hook", () => {
 
   describe("When its loginUser function is called with the worng credentials email 'marcelmartino2053@gmail.com' and the password 'Marcelus'", () => {
     test("Then the function showErrorToast should be called", async () => {
-      server.use(...errorHandlers);
+      server.resetHandlers(...errorHandlers);
       const {
         result: {
           current: { loginUser },
@@ -87,7 +87,7 @@ describe("Given a useUser hook", () => {
       };
 
       await act(async () => loginUser(userCredentialss));
-      expect(mockShowErrorToast).toHaveBeenCalledWith("Invalids credentials");
+      expect(mockShowToast).toHaveBeenCalledWith("Invalids credentials");
     });
   });
 });
