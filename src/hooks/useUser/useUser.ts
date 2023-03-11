@@ -1,5 +1,5 @@
 import jwt_decode from "jwt-decode";
-import { showToast } from "../../modals/modals";
+import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
@@ -28,7 +28,9 @@ const useUser = (): UseUserStructure => {
       dispatch(loginUserActionCreator({ email, id, token }));
       localStorage.setItem("token", token);
     } catch {
-      showToast({ message: "Invalid credentials", type: "error" });
+      dispatch(
+        showModalActionCreator({ modal: "Invalid credentials", isError: true })
+      );
     }
   };
 
