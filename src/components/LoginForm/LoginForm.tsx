@@ -34,7 +34,7 @@ const LoginForm = (): JSX.Element => {
           placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <Button className="login__button" text="sign in" disabled={false} />
+        <Button className="login__button" text="Sign In" disabled={false} />
       </form>
       <span className="login__message">Don't have an account? Sign Up.</span>
     </LoginFormStyled>

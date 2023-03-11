@@ -60,7 +60,7 @@ describe("Given a loginForm component", () => {
       );
 
       const genericButton = screen.getByRole("button", {
-        name: "sign in",
+        name: "Sign In",
       });
 
       expect(genericButton).toBeInTheDocument();
