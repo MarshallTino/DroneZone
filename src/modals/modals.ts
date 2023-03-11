@@ -1,12 +1,12 @@
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastOptions } from "react-toastify";
 
-interface showToastProps {
+interface ShowToastProps {
   message: string;
   type: "error" | "warning" | "success";
 }
 
-export const showToast = ({ message, type }: showToastProps) => {
+export const showToast = ({ message, type }: ShowToastProps) => {
   const toastConfiguration: ToastOptions = {
     position: "bottom-center",
     autoClose: 5000,

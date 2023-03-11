@@ -28,7 +28,7 @@ const useUser = (): UseUserStructure => {
       dispatch(loginUserActionCreator({ email, id, token }));
       localStorage.setItem("token", token);
     } catch {
-      showToast("Invalid credentials");
+      showToast({ message: "Invalid credentials", type: "error" });
     }
   };
 

@@ -9,8 +9,9 @@ const LoginForm = (): JSX.Element => {
 
   const { loginUser } = useUser();
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const handleSubmit = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
     await loginUser({
       email,
       password,
