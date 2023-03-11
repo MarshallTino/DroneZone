@@ -27,12 +27,18 @@ const uiSlice = createSlice({
       ...currentState,
       isLoading: false,
     }),
+    resetModal: (currentState): UiState => ({
+      ...currentState,
+      modal: "",
+      isError: false,
+    }),
   },
 });
 
 export const uiReducer = uiSlice.reducer;
 
 export const {
+  resetModal: resetModalActionCreator,
   showModal: showModalActionCreator,
   setIsLoading: setIsLoadingActionCreator,
   unSetIsLoading: unSetIsLoadingActionCreator,

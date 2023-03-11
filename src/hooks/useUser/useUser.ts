@@ -1,5 +1,6 @@
 import jwt_decode from "jwt-decode";
 import {
+  resetModalActionCreator,
   setIsLoadingActionCreator,
   showModalActionCreator,
   unSetIsLoadingActionCreator,
@@ -17,6 +18,7 @@ const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
 
   const loginUser = async (userCredentials: UserCredentials) => {
+    dispatch(resetModalActionCreator());
     try {
       dispatch(setIsLoadingActionCreator());
       const response = await fetch(`${apiUrl}/user/login`, {
@@ -34,10 +36,10 @@ const useUser = (): UseUserStructure => {
       localStorage.setItem("token", token);
       dispatch(unSetIsLoadingActionCreator());
     } catch {
-      dispatch(unSetIsLoadingActionCreator());
       dispatch(
         showModalActionCreator({ modal: "Invalid credentials", isError: true })
       );
+      dispatch(unSetIsLoadingActionCreator());
     }
   };
 

@@ -1,6 +1,7 @@
 import { ModalPayload, UiState } from "./types";
 import {
   initialState,
+  resetModalActionCreator,
   setIsLoadingActionCreator,
   showModalActionCreator,
   uiReducer,
@@ -8,8 +9,8 @@ import {
 } from "./uiSlice";
 
 describe("Given a uiReducer", () => {
-  describe("When invoked with a showModal action and passed as modal with the tesx 'Invalid credentials' and the isError to true", () => {
-    test("Then it should set the currentState of isError to true", () => {
+  describe("When invoked with a showModal action and passed as a modal with the text 'Invalid credentials' and the isError to true", () => {
+    test("Then it should set the currentState of isError to true and the modal to 'Invalid credentials'", () => {
       const modal: ModalPayload = {
         isError: true,
         modal: "Invalid credentials.",
@@ -23,6 +24,20 @@ describe("Given a uiReducer", () => {
 
       const showModalAction = showModalActionCreator(modal);
       const newModalState = uiReducer(initialState, showModalAction);
+
+      expect(newModalState).toStrictEqual(expectedUiState);
+    });
+  });
+
+  describe("When invoked with a resetModal action", () => {
+    test("Then it should set the currentState of isError to false and the modal to ''", () => {
+      const expectedUiState: UiState = {
+        isLoading: false,
+        isError: false,
+        modal: "",
+      };
+
+      const newModalState = uiReducer(initialState, resetModalActionCreator());
 
       expect(newModalState).toStrictEqual(expectedUiState);
     });
