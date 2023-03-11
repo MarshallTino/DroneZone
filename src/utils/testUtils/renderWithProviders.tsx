@@ -30,8 +30,8 @@ const renderWithProviders = (
 };
 
 export const renderRouterWithProviders = (
-  ui?: React.ReactElement,
-  preloadedState?: PreloadedState<RootState>
+  preloadedState?: PreloadedState<RootState>,
+  ui?: React.ReactElement
 ) => {
   const routerWithProvider = ui ? getRouter(ui) : router;
 
