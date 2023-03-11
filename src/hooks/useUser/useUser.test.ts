@@ -8,6 +8,7 @@ import useUser from "./useUser";
 import { store } from "../../store/store";
 import { server } from "../../mocks/server";
 import { errorHandlers } from "../../mocks/handlers";
+import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 
 beforeAll(() => {
   jest.clearAllMocks();
@@ -18,13 +19,6 @@ afterEach(() => {
 });
 
 const spy = jest.spyOn(store, "dispatch");
-
-const mockShowToast = jest.fn();
-
-jest.mock("../../modals/modals", () => ({
-  ...jest.requireActual("../../modals/modals"),
-  showToast: () => mockShowToast("Invalids credentials"),
-}));
 
 jest.mock("jwt-decode", () => jest.fn());
 
@@ -87,7 +81,9 @@ describe("Given a useUser hook", () => {
       };
 
       await act(async () => loginUser(userCredentialss));
-      expect(mockShowToast).toHaveBeenCalledWith("Invalids credentials");
+      expect(spy).toHaveBeenCalledWith(
+        showModalActionCreator({ modal: "Invalid credentials", isError: true })
+      );
     });
   });
 });
