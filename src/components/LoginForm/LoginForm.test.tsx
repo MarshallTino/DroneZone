@@ -52,7 +52,7 @@ describe("Given a loginForm component", () => {
       expect(emailInput).toBeInTheDocument();
     });
 
-    test("Then it should show a button with the text 'Sign in'", () => {
+    test("Then it should show a button with the text 'Sign In'", () => {
       renderWithProviders(
         <ThemeProvider theme={theme}>
           <LoginForm />
