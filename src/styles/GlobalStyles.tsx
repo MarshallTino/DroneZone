@@ -12,10 +12,9 @@ const GlobalStyles = createGlobalStyle`
 
 body{
   padding:10px;
-font-family: ${(props) => props.theme.fonts.primary};
-background-color:${(props) => props.theme.colors.mainNeutral};
+font-family: "Nunito sans";
+background-color:#565656;
 }
-
 ul,
 li {
   list-style: none;
