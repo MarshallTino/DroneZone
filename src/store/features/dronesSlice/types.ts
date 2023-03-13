@@ -14,6 +14,7 @@ export interface DroneComponent {
 }
 
 export interface DroneStructure {
+  id: string;
   droneImage: string;
   schemaImage: string;
   creator: string;
@@ -37,3 +38,7 @@ export interface DroneStructure {
 }
 
 export type Drones = DroneStructure[];
+
+export interface ApiResponse {
+  drones: Drones;
+}

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { loadDronesActionCreator } from "../../store/features/dronesSlice/dronesSlice";
-import { Drones } from "../../store/features/dronesSlice/types";
+import { ApiResponse } from "../../store/features/dronesSlice/types";
 import { useAppDispatch } from "../../store/hooks";
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -15,9 +15,8 @@ const useDrones = () => {
         headers: { "Content-type": "application/json" },
       });
 
-      const drones = (await response.json()) as Drones;
-
-      dispatch(loadDronesActionCreator(drones));
+      const drones = (await response.json()) as ApiResponse;
+      dispatch(loadDronesActionCreator(drones.drones));
     } catch (error) {
       return (error as Error).message;
     }

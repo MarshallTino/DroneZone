@@ -12,19 +12,19 @@ export const DroneCard = ({
     <DroneCardStyled className="drone-card">
       <img
         className="drone-card__image"
-        width="300"
+        width="350"
         height="320"
         src={droneImage}
         alt={"drone"}
       />
       <div className="properties">
         <span className="properties__container">
-          <h1 className="properties__title">Level</h1>
-          <h2 className="properties__value">{categories.difficulty}</h2>
+          <h2 className="properties__title">Level</h2>
+          <h3 className="properties__value">{categories.difficulty}</h3>
         </span>
         <span className="properties__container">
-          <h1 className="properties__title">Class</h1>
-          <h2 className="properties__value">{categories.droneClass}</h2>
+          <h2 className="properties__title">Class</h2>
+          <h3 className="properties__value">{categories.droneClass}</h3>
         </span>
 
         <span className="properties__container">
@@ -33,8 +33,8 @@ export const DroneCard = ({
         </span>
       </div>
       <div className="creator">
-        <h1 className="creator__title">Created by </h1>
-        <h2 className="creator__name"> {creator}</h2>
+        <h2 className="creator__title">Created by </h2>
+        <h3 className="creator__name"> {creator}</h3>
       </div>
     </DroneCardStyled>
   );
