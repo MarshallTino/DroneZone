@@ -10,7 +10,11 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 
-body{padding:10px}
+body{
+  padding:10px;
+font-family: ${(props) => props.theme.fonts.primary};
+background-color:${(props) => props.theme.colors.mainNeutral};
+}
 
 ul,
 li {

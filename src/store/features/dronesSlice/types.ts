@@ -13,7 +13,7 @@ export interface DroneComponent {
   telemetry?: string;
 }
 
-export interface Drone {
+export interface DroneStructure {
   droneImage: string;
   schemaImage: string;
   creator: string;
@@ -36,4 +36,4 @@ export interface Drone {
   };
 }
 
-export type Drones = Drone[];
+export type Drones = DroneStructure[];
