@@ -8,13 +8,14 @@ const DroneCardStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 360px;
   height: 490px;
   border-radius: 5px;
 
   .drone-card {
     &__image {
-      border-radius: 8px;
       width: 100%;
+      border-radius: 8px;
       object-fit: cover;
     }
   }
@@ -25,7 +26,9 @@ const DroneCardStyled = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-
+    padding: 5px;
+    border: solid 2px ${(props) => props.theme.colors.base};
+    border-radius: 5px;
     &__container {
       width: 100%;
       display: flex;

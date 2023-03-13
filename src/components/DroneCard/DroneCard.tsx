@@ -12,7 +12,7 @@ export const DroneCard = ({
     <DroneCardStyled className="drone-card">
       <img
         className="drone-card__image"
-        width="300"
+        width="350"
         height="320"
         src={droneImage}
         alt={"drone"}
