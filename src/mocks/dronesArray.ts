@@ -1,4 +1,4 @@
-import { Drones } from "../store/features/dronesSlice/types";
+import { Drones, DroneStructure } from "../store/features/dronesSlice/types";
 
 export const mockedDrones: Drones = [
   {
@@ -78,3 +78,5 @@ export const mockedDrones: Drones = [
     },
   },
 ];
+
+export const mockedDrone: DroneStructure = mockedDrones[0];

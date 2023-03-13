@@ -10,8 +10,11 @@ const GlobalStyles = createGlobalStyle`
   margin: 0;
 }
 
-body{padding:10px}
-
+body{
+  padding:10px;
+font-family: "Nunito sans";
+background-color:#565656;
+}
 ul,
 li {
   list-style: none;
