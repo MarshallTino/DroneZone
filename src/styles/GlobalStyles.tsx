@@ -17,10 +17,11 @@ background-color:#565656;
 }
 ul,
 li {
-  list-style: none;
-  padding-inline-start: 0px;
+    list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
-
 a {
   color: inherit;
   text-decoration: inherit;
