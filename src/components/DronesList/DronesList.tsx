@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import useDrones from "../../hooks/useDrones/useDrones";
-import { mockedDrones } from "../../mocks/dronesArray";
 import { useAppSelector } from "../../store/hooks";
 import { DroneCard } from "../DroneCard/DroneCard";
 import DronesListStyled from "./DronesListStyled";
@@ -18,7 +17,7 @@ const DronesList = (): JSX.Element => {
     <>
       <DronesListStyled className="drones-list">
         {drones.map((drone) => (
-          <li key={1}>
+          <li key={drone.id}>
             <DroneCard drone={drone} />
           </li>
         ))}

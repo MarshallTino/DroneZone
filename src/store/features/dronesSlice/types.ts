@@ -14,6 +14,7 @@ export interface DroneComponent {
 }
 
 export interface DroneStructure {
+  id: string;
   droneImage: string;
   schemaImage: string;
   creator: string;
