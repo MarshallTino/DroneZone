@@ -14,6 +14,7 @@ const LoginPage = (): JSX.Element => {
       showErrorToast(modal);
     }
   }, [modal]);
+
   return isLogged ? (
     <Navigate to={"/"} replace={true} />
   ) : (
