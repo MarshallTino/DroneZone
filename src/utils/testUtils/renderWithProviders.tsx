@@ -14,7 +14,6 @@ const renderWithProviders = (
   preloadedState?: PreloadedState<RootState>
 ) => {
   const testStore = preloadedState ? setupStore(preloadedState) : store;
-
   const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
     return (
       <ThemeProvider theme={theme}>
@@ -30,8 +29,8 @@ const renderWithProviders = (
 };
 
 export const renderRouterWithProviders = (
-  preloadedState?: PreloadedState<RootState>,
-  ui?: React.ReactElement
+  ui?: React.ReactElement,
+  preloadedState?: PreloadedState<RootState>
 ) => {
   const routerWithProvider = ui ? getRouter(ui) : router;
 
