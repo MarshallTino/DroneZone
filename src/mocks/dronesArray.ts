@@ -2,7 +2,7 @@ import { Drones, DroneStructure } from "../store/features/dronesSlice/types";
 
 export const mockedDrones: Drones = [
   {
-    id: "4435345",
+    id: "4435sssw345",
     droneImage:
       "https://th.bing.com/th/id/OIP.g0wgRI_-Jes0BWsNmnPspAHaHa?pid=ImgDet&rs=1",
     schemaImage:
@@ -81,7 +81,7 @@ export const mockedDrones: Drones = [
     },
   },
   {
-    id: "4435dwadawd345",
+    id: "4435dwadawd3aaa45",
 
     droneImage:
       "https://img.staticbg.com/images/oaupload/banggood/images/0D/9C/88f43472-ab91-4c89-af6e-f044d0626c21.jpg",
@@ -161,7 +161,7 @@ export const mockedDrones: Drones = [
     },
   },
   {
-    id: "4435dwadawd345",
+    id: "4435dwaaaasdawd345",
 
     droneImage:
       "https://th.bing.com/th/id/OIP.aq8rUK9YBtkqPXTIvfTGPgHaHa?pid=ImgDet&rs=1",
@@ -241,7 +241,7 @@ export const mockedDrones: Drones = [
     },
   },
   {
-    id: "4435dwadawd345",
+    id: "d4435dwadawd345",
 
     droneImage:
       "https://th.bing.com/th/id/OIP.L46JYLdCW8gDEzEjMqAcJgHaHa?pid=ImgDet&rs=1",
