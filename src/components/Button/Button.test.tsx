@@ -6,15 +6,8 @@ import userEvent from "@testing-library/user-event";
 describe("Given a Button component", () => {
   describe("When rendered with the class 'primary__button', with the text 'Primary' and with the action 'action'", () => {
     test("It should render a button with the class 'primary__button', the text 'Primary', and the function 'action'", () => {
-      const action = jest.fn;
-
       render(
-        <Button
-          disabled={false}
-          className="primary__button"
-          text={"primary"}
-          action={action}
-        />
+        <Button disabled={false} className="primary__button" text={"primary"} />
       );
 
       const genericButton = screen.getByRole("button", {
