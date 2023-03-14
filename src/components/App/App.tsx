@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Layout from "../Layout/Layout";
 import useToken from "../../hooks/useToken/useToken";
-function App() {
+const App = (): JSX.Element => {
   const { getToken } = useToken();
 
   useEffect(() => {
@@ -9,6 +9,6 @@ function App() {
   }, [getToken]);
 
   return <Layout />;
-}
+};
 
 export default App;

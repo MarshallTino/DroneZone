@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 
 describe("Given a App component", () => {
   describe("When it is rendered", () => {
-    test("Then it shoul show a sign in button", () => {
+    test("Then it should show a loader", () => {
       const preloadedState = {
         ui: {
           modal: "",
