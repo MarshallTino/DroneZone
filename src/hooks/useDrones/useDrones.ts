@@ -16,6 +16,7 @@ const useDrones = () => {
       });
 
       const drones = (await response.json()) as ApiResponse;
+
       dispatch(loadDronesActionCreator(drones.drones));
     } catch (error) {
       return (error as Error).message;

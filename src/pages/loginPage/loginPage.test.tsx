@@ -6,6 +6,10 @@ import "react-router-dom";
 import renderWithProviders, {
   renderRouterWithProviders,
 } from "../../utils/testUtils/renderWithProviders";
+import {
+  preloadedStateLoggedIn,
+  preloadedStateModal,
+} from "../../utils/testUtils/preloadedStates";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -27,9 +31,7 @@ describe("Given a LoginPage page", () => {
 
   describe("When the entered credentials are invalid and the property modal on the store returns true", () => {
     test("Then it should show a modal with the text 'Invalid credentials'", async () => {
-      await renderRouterWithProviders(<LoginPage />, {
-        ui: { modal: "Invalid credentials", isError: true, isLoading: false },
-      });
+      await renderRouterWithProviders(<LoginPage />, preloadedStateModal);
 
       const modal = await screen.findByText("Invalid credentials");
 
@@ -39,15 +41,7 @@ describe("Given a LoginPage page", () => {
 
   describe("When the user is already logged in", () => {
     test("Then it should call 'Navigate'", () => {
-      const preloadedState = {
-        user: {
-          email: "",
-          id: "",
-          isLogged: true,
-          token: "",
-        },
-      };
-      renderRouterWithProviders(<LoginPage />, preloadedState);
+      renderRouterWithProviders(<LoginPage />, preloadedStateLoggedIn);
       expect(ReactRouterDom.Navigate).toHaveBeenCalled();
     });
   });
