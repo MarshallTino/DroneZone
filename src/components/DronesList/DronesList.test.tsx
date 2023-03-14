@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-import { mockedDrones } from "../../mocks/dronesArray";
 import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import DronesList from "./DronesList";
 import "@testing-library/jest-dom";
