@@ -10,13 +10,13 @@ const BurgerMenu = (): JSX.Element => {
         <div className="menu-header">
           <h2 className="menu-header__title">DroneZone</h2>
         </div>
-        <Link className="menu-item" to={"/"} replace={true}>
+        <Link className="menu-item" to={"/"}>
           Explore Schemas
         </Link>
-        <Link className="menu-item" to={"/login"} replace={true}>
+        <Link className="menu-item" to={"/"}>
           Create a Schema
         </Link>
-        <Link className="menu-item" to={"/"} replace={true}>
+        <Link className="menu-item" to={"/"}>
           My Profile
         </Link>
         <Button

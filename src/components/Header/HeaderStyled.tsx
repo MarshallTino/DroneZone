@@ -11,6 +11,8 @@ const HeaderStyled = styled.div`
   align-items: center;
   margin-bottom: 20px;
   padding-left: 10px;
+  padding-right: 10px;
+
   .header__title {
     color: ${(props) => props.theme.colors.mainLight};
   }
@@ -20,6 +22,11 @@ const HeaderStyled = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+  }
+
+  .header__icon {
+    height: 50px;
+    fill: ${(props) => props.theme.colors.base};
   }
 `;
 
