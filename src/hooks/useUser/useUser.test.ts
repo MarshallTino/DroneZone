@@ -86,4 +86,19 @@ describe("Given a useUser hook", () => {
       );
     });
   });
+
+  describe("When its logoutUser function is called", () => {
+    test("Then the removeToken function and the dispatch should be called with the logout userActionCreator", async () => {
+      const {
+        result: {
+          current: { logoutUser },
+        },
+      } = renderHook(() => useUser(), {
+        wrapper: Wrapper,
+      });
+      await act(async () => logoutUser());
+
+      expect(spy).toHaveBeenCalled();
+    });
+  });
 });

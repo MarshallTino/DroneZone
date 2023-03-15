@@ -9,8 +9,19 @@ import {
 } from "../../utils/testUtils/preloadedStates";
 import React from "react";
 
-afterEach(() => jest.clearAllMocks);
+beforeAll(() => {
+  jest.clearAllMocks();
+  jest.clearAllTimers();
+});
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+const mockLogoutUser = jest.fn();
+
+jest.mock("../../hooks/useUser/useUser", () => () => ({
+  logoutUser: mockLogoutUser,
+}));
 describe("Given a BrugerMenu component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a button with 3 lines", () => {
@@ -59,7 +70,7 @@ describe("Given a BrugerMenu component", () => {
       const setIsOpen = jest.fn();
       jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
 
-      renderRouterWithProviders({}, <BurgerMenu />);
+      renderRouterWithProviders(preloadedStateLoggedIn, <BurgerMenu />);
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));
@@ -75,7 +86,7 @@ describe("Given a BrugerMenu component", () => {
       const setIsOpen = jest.fn();
       jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
 
-      renderRouterWithProviders({}, <BurgerMenu />);
+      renderRouterWithProviders(preloadedStateLoggedIn, <BurgerMenu />);
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));
@@ -85,6 +96,23 @@ describe("Given a BrugerMenu component", () => {
       await act(async () => await userEvent.click(linkExploreSchemas));
 
       expect(setIsOpen).toHaveBeenCalledWith(false);
+    });
+  });
+
+  describe("When the burger menus is opened and the user clicks on the signout button", () => {
+    test("Then the logoutUser function should be called", async () => {
+      const setIsOpen = jest.fn();
+      jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
+
+      renderRouterWithProviders({}, <BurgerMenu />);
+
+      const burgerButton = screen.getByRole("button", { name: "Open Menu" });
+      await act(async () => await userEvent.click(burgerButton));
+
+      const signoutButton = screen.getByRole("button", { name: "Sign Out" });
+      await act(async () => await userEvent.click(signoutButton));
+
+      expect(mockLogoutUser).toHaveBeenCalled();
     });
   });
 });

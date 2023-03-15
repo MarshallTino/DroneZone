@@ -5,15 +5,21 @@ import {
   showModalActionCreator,
   unSetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
-import { loginUserActionCreator } from "../../store/features/user/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/user/userSlice";
 import { useAppDispatch } from "../../store/hooks";
+import useToken from "../useToken/useToken";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
 
 export interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  logoutUser: () => void;
 }
 
 const useUser = (): UseUserStructure => {
+  const { removeToken } = useToken();
   const apiUrl = process.env.REACT_APP_API_URL;
   const dispatch = useAppDispatch();
 
@@ -43,7 +49,12 @@ const useUser = (): UseUserStructure => {
     }
   };
 
-  return { loginUser };
+  const logoutUser = () => {
+    removeToken();
+    dispatch(logoutUserActionCreator());
+  };
+
+  return { loginUser, logoutUser };
 };
 
 export default useUser;
