@@ -1,4 +1,5 @@
 import { mockedDrones } from "../../mocks/dronesArray";
+import { DronesState } from "../../store/features/dronesSlice/types";
 
 export const preloadedStateLoggedIn = {
   user: {
@@ -17,6 +18,6 @@ export const preloadedStateLoading = {
   ui: { isLoading: true, isError: false, modal: "" },
 };
 
-export const preloadedStateDrones = {
+export const preloadedStateDrones: DronesState = {
   drones: mockedDrones,
 };

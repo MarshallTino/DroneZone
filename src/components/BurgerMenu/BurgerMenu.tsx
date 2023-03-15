@@ -16,7 +16,7 @@ const BurgerMenu = (): JSX.Element => {
         <Link className="menu-item" to={"/"}>
           Create a Schema
         </Link>
-        <Link className="menu-item" to={"/"}>
+        <Link className="menu-item" to={"/myProfile"}>
           My Profile
         </Link>
         <Button

@@ -15,7 +15,7 @@ describe("Given a App component", () => {
         },
       };
       renderRouterWithProviders(preloadedState, <App />);
-      renderRouterWithProviders(preloadedStateDrones);
+      renderRouterWithProviders({ drones: preloadedStateDrones });
       const ovalLoader = screen.getByLabelText("oval-loading");
       expect(ovalLoader).toBeInTheDocument();
     });
