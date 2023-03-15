@@ -42,3 +42,11 @@ export type Drones = DroneStructure[];
 export interface ApiResponse {
   drones: Drones;
 }
+
+export interface UserDronesResponse {
+  userDrones: Drones;
+}
+
+export interface DronesState {
+  drones: Drones;
+}
