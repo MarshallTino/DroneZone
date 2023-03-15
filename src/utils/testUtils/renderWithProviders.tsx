@@ -9,7 +9,7 @@ import { RootState, setupStore, store } from "../../store/store";
 import GlobalStyles from "../../styles/GlobalStyles";
 import theme from "../../styles/Theme";
 
-const renderWithProviders = (
+export const renderWithProviders = (
   ui: React.ReactElement,
   preloadedState?: PreloadedState<RootState>
 ) => {
@@ -29,8 +29,8 @@ const renderWithProviders = (
 };
 
 export const renderRouterWithProviders = (
-  ui?: React.ReactElement,
-  preloadedState?: PreloadedState<RootState>
+  preloadedState?: PreloadedState<RootState>,
+  ui?: React.ReactElement
 ) => {
   const routerWithProvider = ui ? getRouter(ui) : router;
 
@@ -39,4 +39,3 @@ export const renderRouterWithProviders = (
     preloadedState
   );
 };
-export default renderWithProviders;

@@ -7,7 +7,7 @@ import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProvi
 describe("Given a layout component", () => {
   describe("When it is rendered and the user isn't logged in", () => {
     test("Then it should show a loginnForm", () => {
-      renderRouterWithProviders(<Layout />, preloadedStateLoading);
+      renderRouterWithProviders(preloadedStateLoading, <Layout />);
 
       const ovalLoader = screen.getByLabelText("oval-loading");
       expect(ovalLoader).toBeInTheDocument();

@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
 import { mockedDrone } from "../../mocks/dronesArray";
-import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import { DroneCard } from "./DroneCard";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
 
 describe("Given a DroneCard component", () => {
   describe("When it receives a drone and is rendered", () => {
