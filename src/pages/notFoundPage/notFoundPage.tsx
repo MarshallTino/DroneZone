@@ -1,22 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 import NotFoundPageStyled from "./notFoundPageStyled";
 
 const NotFoundPage = (): JSX.Element => {
-  const navigate = useNavigate();
-
   return (
     <NotFoundPageStyled>
       <div className="notFoundPage">
         <h2 className="notFoundPage__number">404</h2>
         <h2 className="notFoundPage__text">Page not found...</h2>
       </div>
-      <Button
-        className={"notFoundPage__button"}
-        text={"Back To Home Page"}
-        disabled={false}
-        action={() => navigate("/")}
-      />
+      <Link className="notFoundPage__link" to={"/"}>
+        Back To HomePage
+      </Link>
     </NotFoundPageStyled>
   );
 };
