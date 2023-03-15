@@ -1,7 +1,12 @@
 import { rest } from "msw";
 import { mockedDrones } from "./dronesArray";
 
-const routes = { user: "/user", login: "/login" };
+const routes = {
+  user: "/user",
+  login: "/login",
+  drones: "/drones",
+  userDrones: "/userDrones",
+};
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 
@@ -15,7 +20,7 @@ export const handlers = [
       })
     );
   }),
-  rest.get(`${apiUrl}/drones`, async (req, res, ctx) => {
+  rest.get(`${apiUrl}${routes.drones}`, async (req, res, ctx) => {
     return res(
       ctx.status(200),
 
@@ -31,6 +36,6 @@ export const errorHandlers = [
     return res(ctx.status(401));
   }),
   rest.get(`${apiUrl}/drones`, async (req, res, ctx) => {
-    return res(ctx.status(200));
+    return res(ctx.status(401));
   }),
 ];
