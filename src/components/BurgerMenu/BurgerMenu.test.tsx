@@ -7,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 describe("Given a BrugerMenu component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a button with 3 lines", () => {
-      renderRouterWithProviders(<BurgerMenu />);
+      renderRouterWithProviders({}, <BurgerMenu />);
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       expect(burgerButton).toBeInTheDocument();
@@ -16,7 +16,7 @@ describe("Given a BrugerMenu component", () => {
 
   describe("When the burger menu is clicked", () => {
     test("Then it should show a side menu with the title DroneZone", async () => {
-      renderRouterWithProviders(<BurgerMenu />);
+      renderRouterWithProviders({}, <BurgerMenu />);
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));

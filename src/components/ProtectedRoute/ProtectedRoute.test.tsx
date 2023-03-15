@@ -22,7 +22,7 @@ describe("Given a ProtectedRoute component", () => {
       });
       const element = <div>Hellothere</div>;
 
-      renderRouterWithProviders(<ProtectedRoute element={element} />);
+      renderRouterWithProviders({}, <ProtectedRoute element={element} />);
 
       const expectedElement = screen.getByText("Hellothere");
 
@@ -34,7 +34,7 @@ describe("Given a ProtectedRoute component", () => {
     test("Then it should show not render the react element received by props", () => {
       const element = <div>Hellothere</div>;
 
-      renderRouterWithProviders(<ProtectedRoute element={element} />);
+      renderRouterWithProviders({}, <ProtectedRoute element={element} />);
 
       expect(ReactRouterDom.Navigate).toHaveBeenCalled();
     });

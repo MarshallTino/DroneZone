@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 import App from "./App";
 import "@testing-library/jest-dom";
+import { preloadedStateDrones } from "../../utils/testUtils/preloadedStates";
 
 describe("Given a App component", () => {
   describe("When it is rendered", () => {
@@ -13,8 +14,8 @@ describe("Given a App component", () => {
           isLoading: true,
         },
       };
-      renderRouterWithProviders(<App />, preloadedState);
-
+      renderRouterWithProviders(preloadedState, <App />);
+      renderRouterWithProviders(preloadedStateDrones);
       const ovalLoader = screen.getByLabelText("oval-loading");
       expect(ovalLoader).toBeInTheDocument();
     });

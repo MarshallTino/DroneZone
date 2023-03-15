@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import Loader from "./Loader";
 import "@testing-library/jest-dom";
+import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
 
 describe("Given a loader component", () => {
   describe("When it is invoked", () => {

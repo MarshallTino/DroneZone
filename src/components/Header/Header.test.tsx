@@ -7,14 +7,14 @@ import { preloadedStateLoggedIn } from "../../utils/testUtils/preloadedStates";
 describe("Given a Header component", () => {
   describe("When it is rendeder", () => {
     test("Then it should show the heading 'DroneZone'", () => {
-      renderRouterWithProviders(<Header />, preloadedStateLoggedIn);
+      renderRouterWithProviders(preloadedStateLoggedIn, <Header />);
 
       const title = screen.getByRole("heading", { name: "DroneZone" });
       expect(title).toBeInTheDocument();
     });
 
     test("Then it should show a button with 3 lines", () => {
-      renderRouterWithProviders(<Header />, preloadedStateLoggedIn);
+      renderRouterWithProviders(preloadedStateLoggedIn, <Header />);
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       expect(burgerButton).toBeInTheDocument();

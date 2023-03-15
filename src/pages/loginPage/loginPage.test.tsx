@@ -3,8 +3,9 @@ import * as ReactRouterDom from "react-router-dom";
 import LoginPage from "./loginPage";
 import "@testing-library/jest-dom/extend-expect";
 import "react-router-dom";
-import renderWithProviders, {
+import {
   renderRouterWithProviders,
+  renderWithProviders,
 } from "../../utils/testUtils/renderWithProviders";
 import {
   preloadedStateLoggedIn,
@@ -31,7 +32,7 @@ describe("Given a LoginPage page", () => {
 
   describe("When the entered credentials are invalid and the property modal on the store returns true", () => {
     test("Then it should show a modal with the text 'Invalid credentials'", async () => {
-      await renderRouterWithProviders(<LoginPage />, preloadedStateModal);
+      await renderRouterWithProviders(preloadedStateModal, <LoginPage />);
 
       const modal = await screen.findByText("Invalid credentials");
 
@@ -41,7 +42,7 @@ describe("Given a LoginPage page", () => {
 
   describe("When the user is already logged in", () => {
     test("Then it should call 'Navigate'", () => {
-      renderRouterWithProviders(<LoginPage />, preloadedStateLoggedIn);
+      renderRouterWithProviders(preloadedStateLoggedIn, <LoginPage />);
       expect(ReactRouterDom.Navigate).toHaveBeenCalled();
     });
   });

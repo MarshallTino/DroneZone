@@ -1,11 +1,11 @@
 import { act, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import theme from "../../styles/Theme";
-import renderWithProviders from "../../utils/testUtils/renderWithProviders";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
 import LoginForm from "./LoginForm";
+import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
 
 const mockLoginUser = jest.fn();
 
