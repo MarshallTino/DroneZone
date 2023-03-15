@@ -1,17 +1,9 @@
-import { useEffect } from "react";
-import useDrones from "../../hooks/useDrones/useDrones";
 import { useAppSelector } from "../../store/hooks";
 import { DroneCard } from "../DroneCard/DroneCard";
 import DronesListStyled from "./DronesListStyled";
 
 const DronesList = (): JSX.Element => {
-  const { getDrones } = useDrones();
-
-  useEffect(() => {
-    getDrones();
-  }, [getDrones]);
-
-  const drones = useAppSelector((state) => state.drones);
+  const drones = useAppSelector((state) => state.drones.drones);
 
   return (
     <>
