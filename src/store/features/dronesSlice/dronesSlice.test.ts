@@ -14,7 +14,7 @@ describe("Given a dronesReducer", () => {
         loadDronesAction
       );
 
-      expect(newDronesState).toStrictEqual(mockedDrones);
+      expect(newDronesState).toStrictEqual({ drones: mockedDrones });
     });
   });
 });

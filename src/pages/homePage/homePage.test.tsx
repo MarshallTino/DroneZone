@@ -7,7 +7,7 @@ import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
 describe("Given a homePage", () => {
   describe("When it is rendered", () => {
     test("Then it should show a drone Card", () => {
-      renderWithProviders(<HomePage />, preloadedStateDrones);
+      renderWithProviders(<HomePage />, { drones: preloadedStateDrones });
 
       const droneCard = screen.getByRole("heading", { name: "Jane Smith" });
       expect(droneCard).toBeInTheDocument();

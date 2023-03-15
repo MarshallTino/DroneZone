@@ -9,7 +9,7 @@ describe("Given a DronesList component", () => {
     test("Then it should show", async () => {
       const propertyText = "Jane Smith";
 
-      renderWithProviders(<DronesList />, preloadedStateDrones);
+      renderWithProviders(<DronesList />, { drones: preloadedStateDrones });
       const card = screen.getByRole("heading", { name: propertyText });
 
       expect(card).toBeInTheDocument();

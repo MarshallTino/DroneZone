@@ -12,6 +12,7 @@ const BurgerStyled = styled.div`
   .bm-burger-bars {
     background: ${(props) => props.theme.colors.base};
     border-radius: 2px;
+    height: 4px !important;
   }
 
   /* Color/shape of burger icon bars on hover*/

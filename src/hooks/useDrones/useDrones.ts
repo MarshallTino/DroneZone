@@ -1,6 +1,9 @@
 import { useCallback } from "react";
 import { loadDronesActionCreator } from "../../store/features/dronesSlice/dronesSlice";
-import { ApiResponse } from "../../store/features/dronesSlice/types";
+import {
+  ApiResponse,
+  UserDronesResponse,
+} from "../../store/features/dronesSlice/types";
 import {
   setIsLoadingActionCreator,
   showModalActionCreator,
@@ -42,10 +45,9 @@ const useDrones = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      const { drones } = (await response.json()) as ApiResponse;
-
+      const drones = (await response.json()) as UserDronesResponse;
       dispatch(unSetIsLoadingActionCreator());
-      dispatch(loadDronesActionCreator(drones));
+      dispatch(loadDronesActionCreator(drones.userDrones));
     } catch (error) {
       dispatch(unSetIsLoadingActionCreator());
       dispatch(
