@@ -19,7 +19,7 @@ afterEach(() => {
 
 const mockTokenPayload: CustomTokenPayload = {
   email: "marshall@gmail.com",
-  id: "33333",
+  sub: "33333",
 };
 
 describe("Given a useToken custom hook", () => {

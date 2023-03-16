@@ -26,7 +26,7 @@ const mockedToken = "aj39jdjadjawdij";
 
 const mockTokenPayload: CustomTokenPayload = {
   email: "marcelmartino2053@gmail.com",
-  id: "5",
+  sub: "5",
 };
 
 const userCredentials: UserCredentials = {

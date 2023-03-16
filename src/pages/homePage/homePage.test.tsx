@@ -9,7 +9,7 @@ describe("Given a homePage", () => {
     test("Then it should show a drone Card", () => {
       renderWithProviders(<HomePage />, { drones: preloadedStateDrones });
 
-      const droneCard = screen.getByRole("heading", { name: "Jane Smith" });
+      const droneCard = screen.getByRole("heading", { name: "MarshallTino" });
       expect(droneCard).toBeInTheDocument();
     });
   });

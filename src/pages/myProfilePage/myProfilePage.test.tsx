@@ -10,7 +10,7 @@ import "@testing-library/jest-dom";
 describe("Given a myProfilePage", () => {
   describe("When it is rendered and the logged user has 2 created drones", () => {
     test("Then it should show 2 drone cards", () => {
-      const propertyText = "Jane Smith";
+      const propertyText = "MarshallTino";
 
       renderRouterWithProviders(
         { drones: preloadedStateDrones, ...preloadedStateLoggedIn },
