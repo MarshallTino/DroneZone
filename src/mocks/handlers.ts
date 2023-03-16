@@ -29,6 +29,12 @@ export const handlers = [
       })
     );
   }),
+  rest.delete(
+    `${apiUrl}${routes.drones}/d4435dwadawd345`,
+    async (req, res, ctx) => {
+      return res(ctx.status(200));
+    }
+  ),
 ];
 
 export const errorHandlers = [
@@ -38,4 +44,11 @@ export const errorHandlers = [
   rest.get(`${apiUrl}/drones`, async (req, res, ctx) => {
     return res(ctx.status(401));
   }),
+
+  rest.delete(
+    `${apiUrl}${routes.drones}/d4435dwadawd345`,
+    async (req, res, ctx) => {
+      return res(ctx.status(500));
+    }
+  ),
 ];
