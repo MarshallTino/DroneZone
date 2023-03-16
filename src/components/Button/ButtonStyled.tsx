@@ -7,7 +7,7 @@ const ButtonStyled = styled.button`
   font-family: "Nunito sans";
   font-weight: 900;
   font-size: 20px;
-  color: #ffffff;
+  color: ${(props) => props.theme.colors.mainDark};
   border-radius: 8px;
 `;
 export default ButtonStyled;
