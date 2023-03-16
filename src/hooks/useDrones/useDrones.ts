@@ -1,7 +1,11 @@
 import { useCallback } from "react";
-import { loadDronesActionCreator } from "../../store/features/dronesSlice/dronesSlice";
+import {
+  deleteDronesActionCreator,
+  loadDronesActionCreator,
+} from "../../store/features/dronesSlice/dronesSlice";
 import {
   ApiResponse,
+  DroneStructure,
   UserDronesResponse,
 } from "../../store/features/dronesSlice/types";
 import {
@@ -59,7 +63,34 @@ const useDrones = () => {
       return (error as Error).message;
     }
   }, [dispatch, token]);
-  return { getUserDrones, getDrones };
+
+  const deleteDrone = useCallback(
+    async (drone: DroneStructure) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
+
+        const response = await fetch(`${apiUrl}/drones/${drone.id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("The Drone could not be deleted");
+        }
+
+        dispatch(unSetIsLoadingActionCreator());
+        dispatch(deleteDronesActionCreator(drone));
+      } catch (error) {
+        dispatch(unSetIsLoadingActionCreator());
+        return (error as Error).message;
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { getUserDrones, getDrones, deleteDrone };
 };
 
 export default useDrones;
