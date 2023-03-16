@@ -96,7 +96,7 @@ describe("Given a useDrones hook", () => {
       await getUserDrones();
 
       expect(global.fetch).toHaveBeenCalledWith(
-        `${process.env.REACT_APP_API_URL}/drones/userDrones`,
+        `${process.env.REACT_APP_API_URL}/drones/user-drones`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

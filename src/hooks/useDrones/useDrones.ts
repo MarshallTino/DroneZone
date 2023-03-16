@@ -45,7 +45,7 @@ const useDrones = () => {
     try {
       dispatch(setIsLoadingActionCreator());
 
-      const response = await fetch(`${apiUrl}/drones/userDrones`, {
+      const response = await fetch(`${apiUrl}/drones/user-drones`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });

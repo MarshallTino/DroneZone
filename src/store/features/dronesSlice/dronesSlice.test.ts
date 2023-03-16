@@ -5,7 +5,7 @@ import {
   dronesReducer,
   loadDronesActionCreator,
 } from "./dronesSlice";
-import { Drones, DronesState, DroneStructure } from "./types";
+import { DronesState } from "./types";
 
 describe("Given a dronesReducer", () => {
   describe("When its loadDrones action is called passing it a drones array", () => {

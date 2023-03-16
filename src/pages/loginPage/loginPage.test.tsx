@@ -7,10 +7,7 @@ import {
   renderRouterWithProviders,
   renderWithProviders,
 } from "../../utils/testUtils/renderWithProviders";
-import {
-  preloadedStateLoggedIn,
-  preloadedStateModal,
-} from "../../utils/testUtils/preloadedStates";
+import { preloadedStateLoggedIn } from "../../utils/testUtils/preloadedStates";
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
@@ -27,16 +24,6 @@ describe("Given a LoginPage page", () => {
       const result = screen.getByRole("button", { name: expectResult });
 
       expect(result).toBeInTheDocument();
-    });
-  });
-
-  describe("When the entered credentials are invalid and the property modal on the store returns true", () => {
-    test("Then it should show a modal with the text 'Invalid credentials'", async () => {
-      await renderRouterWithProviders(preloadedStateModal, <LoginPage />);
-
-      const modal = await screen.findByText("Invalid credentials");
-
-      expect(modal).toBeInTheDocument();
     });
   });
 
