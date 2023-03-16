@@ -52,7 +52,7 @@ const useDrones = () => {
       });
 
       const drones = (await response.json()) as UserDronesResponse;
-      drones.userDrones &&
+      !drones.userDrones[0] &&
         dispatch(
           showModalActionCreator({
             modal: "You have not created any Drones.",
