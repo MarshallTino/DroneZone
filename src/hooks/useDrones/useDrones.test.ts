@@ -1,8 +1,11 @@
 import { renderHook } from "@testing-library/react";
 import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
-import { errorHandlers } from "../../mocks/handlers";
+import { errorHandlers, getUserDronesEmpty } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
-import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
+import {
+  showModalActionCreator,
+  unSetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../utils/testUtils/Wrapper";
 import useDrones from "./useDrones";
@@ -12,6 +15,21 @@ beforeAll(() => {
 });
 
 const spy = jest.spyOn(store, "dispatch");
+
+describe("When its getUserDrones function is called and responds with an empty array", () => {
+  test("Then the showModalaction should be called", async () => {
+    server.use(...getUserDronesEmpty);
+
+    const {
+      result: {
+        current: { getUserDrones },
+      },
+    } = renderHook(() => useDrones(), { wrapper: Wrapper });
+
+    await getUserDrones();
+    expect(spy).toHaveBeenCalled();
+  });
+});
 
 describe("Given a useDrones hook", () => {
   describe("When its getDrones function is called", () => {
@@ -119,7 +137,7 @@ describe("Given a useDrones hook", () => {
 
       await getUserDrones();
       expect(spy).toHaveBeenNthCalledWith(
-        3,
+        4,
         showModalActionCreator({
           isError: true,
           modal: "You have not created any Drones.",

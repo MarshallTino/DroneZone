@@ -10,6 +10,19 @@ const routes = {
 
 const apiUrl = process.env.REACT_APP_API_URL!;
 
+export const getUserDronesEmpty = [
+  rest.get(
+    `${apiUrl}${routes.drones}${routes.userDrones}`,
+    async (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          userDrones: [],
+        })
+      );
+    }
+  ),
+];
 export const handlers = [
   rest.post(`${apiUrl}${routes.user}${routes.login}`, async (req, res, ctx) => {
     return res(

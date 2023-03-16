@@ -42,6 +42,7 @@ const useDrones = () => {
   }, [dispatch]);
 
   const getUserDrones = useCallback(async () => {
+    dispatch(resetModalActionCreator());
     try {
       dispatch(setIsLoadingActionCreator());
 
@@ -51,6 +52,13 @@ const useDrones = () => {
       });
 
       const drones = (await response.json()) as UserDronesResponse;
+      drones.userDrones &&
+        dispatch(
+          showModalActionCreator({
+            modal: "You have not created any Drones.",
+            isError: true,
+          })
+        );
       dispatch(unSetIsLoadingActionCreator());
       dispatch(loadDronesActionCreator(drones.userDrones));
     } catch (error) {
