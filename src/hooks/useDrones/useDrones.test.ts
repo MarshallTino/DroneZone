@@ -2,10 +2,7 @@ import { renderHook } from "@testing-library/react";
 import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
 import { errorHandlers, getUserDronesEmpty } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
-import {
-  showModalActionCreator,
-  unSetIsLoadingActionCreator,
-} from "../../store/features/uiSlice/uiSlice";
+import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../utils/testUtils/Wrapper";
 import useDrones from "./useDrones";

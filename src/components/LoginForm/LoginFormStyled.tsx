@@ -9,6 +9,7 @@ const LoginFormStyled = styled.div`
   height: 500px;
   background-color: ${(props) => props.theme.colors.mainDark};
   padding: 20px;
+  border-radius: 5px;
   .login {
     &__form {
       display: flex;
