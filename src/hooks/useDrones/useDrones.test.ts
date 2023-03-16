@@ -2,15 +2,12 @@ import { renderHook } from "@testing-library/react";
 import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
 import { errorHandlers } from "../../mocks/handlers";
 import { server } from "../../mocks/server";
+import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../utils/testUtils/Wrapper";
 import useDrones from "./useDrones";
 
 beforeAll(() => {
-  jest.clearAllMocks();
-});
-
-afterEach(() => {
   jest.clearAllMocks();
 });
 
@@ -57,7 +54,7 @@ describe("Given a useDrones hook", () => {
       } = renderHook(() => useDrones(), { wrapper: Wrapper });
 
       await deleteDrone(mockedDrone);
-      expect(spy).toHaveBeenNthCalledWith(3, {
+      expect(spy).toHaveBeenNthCalledWith(4, {
         payload: mockedDrone,
         type: "drones/deleteDrones",
       });
@@ -112,7 +109,7 @@ describe("Given a useDrones hook", () => {
 
   describe("When its getUserDrones function is called and responds with an error", () => {
     test("Then the loadDronesAction of the dronesSlice should be called", async () => {
-      server.resetHandlers(...errorHandlers);
+      server.use(...errorHandlers);
 
       const {
         result: {
@@ -121,7 +118,13 @@ describe("Given a useDrones hook", () => {
       } = renderHook(() => useDrones(), { wrapper: Wrapper });
 
       await getUserDrones();
-      expect(spy).not.toHaveBeenCalledWith(mockedDrones);
+      expect(spy).toHaveBeenNthCalledWith(
+        3,
+        showModalActionCreator({
+          isError: true,
+          modal: "You have not created any Drones.",
+        })
+      );
     });
   });
 });

@@ -9,6 +9,7 @@ import {
   UserDronesResponse,
 } from "../../store/features/dronesSlice/types";
 import {
+  resetModalActionCreator,
   setIsLoadingActionCreator,
   showModalActionCreator,
   unSetIsLoadingActionCreator,
@@ -67,9 +68,10 @@ const useDrones = () => {
   const deleteDrone = useCallback(
     async (drone: DroneStructure) => {
       try {
+        dispatch(resetModalActionCreator());
         dispatch(setIsLoadingActionCreator());
 
-        const response = await fetch(`${apiUrl}/drones/${drone.id}`, {
+        const response = await fetch(`${apiUrl}/drones/delete/${drone.id}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -77,14 +79,19 @@ const useDrones = () => {
         });
 
         if (!response.ok) {
-          throw new Error("The Drone could not be deleted");
+          throw new Error("The Drone couldn't be deleted");
         }
 
         dispatch(unSetIsLoadingActionCreator());
         dispatch(deleteDronesActionCreator(drone));
       } catch (error) {
         dispatch(unSetIsLoadingActionCreator());
-        return (error as Error).message;
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modal: "The Drone couldn't be deleted",
+          })
+        );
       }
     },
     [dispatch, token]

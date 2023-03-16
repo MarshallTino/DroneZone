@@ -5,7 +5,7 @@ const routes = {
   user: "/user",
   login: "/login",
   drones: "/drones",
-  userDrones: "/userDrones",
+  userDrones: "/user-drones",
 };
 
 const apiUrl = process.env.REACT_APP_API_URL!;
@@ -30,7 +30,7 @@ export const handlers = [
     );
   }),
   rest.delete(
-    `${apiUrl}${routes.drones}/d4435dwadawd345`,
+    `${apiUrl}${routes.drones}/delete/d4435dwadawd345`,
     async (req, res, ctx) => {
       return res(ctx.status(200));
     }
@@ -46,7 +46,7 @@ export const errorHandlers = [
   }),
 
   rest.delete(
-    `${apiUrl}${routes.drones}/d4435dwadawd345`,
+    `${apiUrl}${routes.drones}/delete/d4435dwadawd345`,
     async (req, res, ctx) => {
       return res(ctx.status(500));
     }
