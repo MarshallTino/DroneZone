@@ -18,6 +18,7 @@ export interface DroneStructure {
   droneImage: string;
   schemaImage: string;
   creator: string;
+  creatorName: string;
   categories: {
     difficulty: string;
     transmissionType: string;

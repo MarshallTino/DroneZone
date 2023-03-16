@@ -7,10 +7,12 @@ import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
 describe("Given a DronesList component", () => {
   describe("When it is rendered", () => {
     test("Then it should show", async () => {
-      const propertyText = "Jane Smith";
+      const propertyText = "MarshallTino";
 
       renderWithProviders(<DronesList />, { drones: preloadedStateDrones });
-      const card = screen.getByRole("heading", { name: propertyText });
+      const card = screen.getByRole("heading", {
+        name: propertyText,
+      });
 
       expect(card).toBeInTheDocument();
     });

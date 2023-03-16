@@ -1,10 +1,15 @@
 import { useCallback } from "react";
-import { loadDronesActionCreator } from "../../store/features/dronesSlice/dronesSlice";
+import {
+  deleteDronesActionCreator,
+  loadDronesActionCreator,
+} from "../../store/features/dronesSlice/dronesSlice";
 import {
   ApiResponse,
+  DroneStructure,
   UserDronesResponse,
 } from "../../store/features/dronesSlice/types";
 import {
+  resetModalActionCreator,
   setIsLoadingActionCreator,
   showModalActionCreator,
   unSetIsLoadingActionCreator,
@@ -40,7 +45,7 @@ const useDrones = () => {
     try {
       dispatch(setIsLoadingActionCreator());
 
-      const response = await fetch(`${apiUrl}/drones/userDrones`, {
+      const response = await fetch(`${apiUrl}/drones/user-drones`, {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -59,7 +64,40 @@ const useDrones = () => {
       return (error as Error).message;
     }
   }, [dispatch, token]);
-  return { getUserDrones, getDrones };
+
+  const deleteDrone = useCallback(
+    async (drone: DroneStructure) => {
+      try {
+        dispatch(resetModalActionCreator());
+        dispatch(setIsLoadingActionCreator());
+
+        const response = await fetch(`${apiUrl}/drones/delete/${drone.id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("The Drone couldn't be deleted");
+        }
+
+        dispatch(unSetIsLoadingActionCreator());
+        dispatch(deleteDronesActionCreator(drone));
+      } catch (error) {
+        dispatch(unSetIsLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modal: "The Drone couldn't be deleted",
+          })
+        );
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { getUserDrones, getDrones, deleteDrone };
 };
 
 export default useDrones;

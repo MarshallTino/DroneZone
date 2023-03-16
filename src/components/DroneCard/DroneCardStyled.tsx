@@ -9,8 +9,9 @@ const DroneCardStyled = styled.div`
   align-items: center;
   width: 100%;
   max-width: 360px;
-  height: 490px;
+  height: 100%;
   border-radius: 5px;
+  gap: 20px;
 
   .drone-card {
     &__image {

@@ -8,7 +8,11 @@ const HomePage = (): JSX.Element => {
     getDrones();
   }, [getDrones]);
 
-  return <DronesList />;
+  return (
+    <>
+      <DronesList />
+    </>
+  );
 };
 
 export default HomePage;

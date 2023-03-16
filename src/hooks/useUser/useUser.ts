@@ -36,7 +36,7 @@ const useUser = (): UseUserStructure => {
 
       const tokenPayload: CustomTokenPayload = jwt_decode(token);
 
-      const { email, id } = tokenPayload;
+      const { email, sub: id } = tokenPayload;
 
       dispatch(loginUserActionCreator({ email, id, token }));
       localStorage.setItem("token", token);
