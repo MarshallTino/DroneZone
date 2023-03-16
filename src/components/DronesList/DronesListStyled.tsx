@@ -5,6 +5,7 @@ const DronesListStyled = styled.ul`
   flex-direction: column;
   align-items: center;
   gap: 1.625rem;
+  width: 100%;
 `;
 
 export default DronesListStyled;

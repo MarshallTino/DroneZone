@@ -2,6 +2,7 @@ import { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
+import { useAppSelector } from "../../store/hooks";
 import Button from "../Button/Button";
 import BurgerStyled from "./BurgerMenu.Styled";
 
@@ -12,12 +13,14 @@ const BurgerMenu = (): JSX.Element => {
     setIsOpen(false);
   };
 
+  const isLogged = useAppSelector((state) => state.user.isLogged);
   return (
     <BurgerStyled>
       <Menu
         isOpen={isOpen}
         onOpen={() => setIsOpen(true)}
         onClose={() => setIsOpen(false)}
+        burgerButtonClassName={isLogged ? "burger-menu" : "burger-menu-hidden"}
       >
         <div className="menu-header">
           <h2 className="menu-header__title">DroneZone</h2>
@@ -35,7 +38,10 @@ const BurgerMenu = (): JSX.Element => {
           text={"Sign Out"}
           className="menu-header__signout button"
           disabled={false}
-          action={() => logoutUser()}
+          action={() => {
+            closeMenu();
+            logoutUser();
+          }}
         />
       </Menu>
     </BurgerStyled>

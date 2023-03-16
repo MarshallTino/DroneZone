@@ -9,7 +9,6 @@ import Loader from "../Loader/Loader";
 const Layout = (): JSX.Element => {
   const { isLoading } = useAppSelector((state) => state.ui);
   const { modal } = useAppSelector((state) => state.ui);
-
   useEffect(() => {
     if (modal) {
       showErrorToast(modal);

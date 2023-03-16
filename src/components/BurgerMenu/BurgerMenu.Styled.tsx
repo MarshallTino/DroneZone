@@ -7,7 +7,9 @@ const BurgerStyled = styled.div`
     width: 36px;
     height: 30px;
   }
-
+  .burger-menu-hidden {
+    visibility: hidden !important;
+  }
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
     background: ${(props) => props.theme.colors.base};
