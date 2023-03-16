@@ -25,7 +25,13 @@ jest.mock("../../hooks/useUser/useUser", () => () => ({
 describe("Given a BrugerMenu component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a button with 3 lines", () => {
-      renderRouterWithProviders({}, <BurgerMenu />);
+      renderRouterWithProviders(
+        {
+          drones: preloadedStateDrones,
+          user: { email: "da", id: "", isLogged: true, token: "sfeesfesf" },
+        },
+        <BurgerMenu />
+      );
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       expect(burgerButton).toBeInTheDocument();
@@ -54,7 +60,10 @@ describe("Given a BrugerMenu component", () => {
         .mockImplementation(() => [false, setIsOpen]);
 
       renderRouterWithProviders(
-        { drones: preloadedStateDrones },
+        {
+          drones: preloadedStateDrones,
+          user: { email: "da", id: "", isLogged: true, token: "sfeesfesf" },
+        },
         <BurgerMenu />
       );
 
@@ -70,7 +79,13 @@ describe("Given a BrugerMenu component", () => {
       const setIsOpen = jest.fn();
       jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
 
-      renderRouterWithProviders(preloadedStateLoggedIn, <BurgerMenu />);
+      renderRouterWithProviders(
+        {
+          drones: preloadedStateDrones,
+          user: { email: "da", id: "", isLogged: true, token: "sfeesfesf" },
+        },
+        <BurgerMenu />
+      );
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));
@@ -86,7 +101,13 @@ describe("Given a BrugerMenu component", () => {
       const setIsOpen = jest.fn();
       jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
 
-      renderRouterWithProviders(preloadedStateLoggedIn, <BurgerMenu />);
+      renderRouterWithProviders(
+        {
+          drones: preloadedStateDrones,
+          user: { email: "da", id: "", isLogged: true, token: "sfeesfesf" },
+        },
+        <BurgerMenu />
+      );
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));
@@ -104,7 +125,13 @@ describe("Given a BrugerMenu component", () => {
       const setIsOpen = jest.fn();
       jest.spyOn(React, "useState").mockImplementation(() => [true, setIsOpen]);
 
-      renderRouterWithProviders({}, <BurgerMenu />);
+      renderRouterWithProviders(
+        {
+          drones: preloadedStateDrones,
+          user: { email: "da", id: "", isLogged: true, token: "sfeesfesf" },
+        },
+        <BurgerMenu />
+      );
 
       const burgerButton = screen.getByRole("button", { name: "Open Menu" });
       await act(async () => await userEvent.click(burgerButton));
