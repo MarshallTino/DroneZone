@@ -1,5 +1,6 @@
 import { mockedDrone, mockedDrones } from "../../../mocks/dronesArray";
 import {
+  createDroneActionCreator,
   deleteDronesActionCreator,
   dronesInitialState,
   dronesReducer,
@@ -28,6 +29,16 @@ describe("Given a dronesReducer", () => {
         { drones: mockedDrones },
         deleteDroneAction
       );
+
+      expect(newDronesState).toStrictEqual(expectedDrones);
+    });
+  });
+
+  describe("When its createDrone action is called passing it a drone", () => {
+    test("Then the drone should be added to the store", () => {
+      const createDroneAction = createDroneActionCreator(mockedDrone);
+      const expectedDrones: DronesState = { drones: [mockedDrone] };
+      const newDronesState = dronesReducer({ drones: [] }, createDroneAction);
 
       expect(newDronesState).toStrictEqual(expectedDrones);
     });

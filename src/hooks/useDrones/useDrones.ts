@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import {
+  createDroneActionCreator,
   deleteDronesActionCreator,
   loadDronesActionCreator,
 } from "../../store/features/dronesSlice/dronesSlice";
@@ -15,6 +16,7 @@ import {
   unSetIsLoadingActionCreator,
 } from "../../store/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { CreateDroneResponse } from "./types";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -105,7 +107,38 @@ const useDrones = () => {
     [dispatch, token]
   );
 
-  return { getUserDrones, getDrones, deleteDrone };
+  const createDrone = useCallback(
+    async (drone: FormData) => {
+      try {
+        dispatch(resetModalActionCreator());
+        dispatch(setIsLoadingActionCreator());
+        const response = await fetch(`${apiUrl}/drones/create-drone`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-type": "multipart/form-data",
+          },
+          body: { ...drone },
+        });
+
+        const createdDrone = (await response.json()) as CreateDroneResponse;
+
+        dispatch(createDroneActionCreator(createdDrone.drone));
+        dispatch(unSetIsLoadingActionCreator());
+      } catch (error) {
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modal: "The drone couldn't be created.",
+          })
+        );
+        dispatch(unSetIsLoadingActionCreator());
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { getUserDrones, getDrones, deleteDrone, createDrone };
 };
 
 export default useDrones;
