@@ -20,6 +20,13 @@ const dronesSlice = createSlice({
       );
       return { drones: newDrones };
     },
+    createDrone: (
+      currentDronesState,
+      action: PayloadAction<DroneStructure>
+    ): DronesState => ({
+      ...currentDronesState,
+      drones: [...currentDronesState.drones, action.payload],
+    }),
   },
 });
 
@@ -27,4 +34,5 @@ export const dronesReducer = dronesSlice.reducer;
 export const {
   loadDrones: loadDronesActionCreator,
   deleteDrones: deleteDronesActionCreator,
+  createDrone: createDroneActionCreator,
 } = dronesSlice.actions;

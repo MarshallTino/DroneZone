@@ -142,4 +142,42 @@ describe("Given a useDrones hook", () => {
       );
     });
   });
+
+  describe("Given the createDrone function", () => {
+    describe("When it is called", () => {
+      test("Then it should call the dispatch", async () => {
+        const {
+          result: {
+            current: { createDrone },
+          },
+        } = renderHook(() => useDrones(), { wrapper: Wrapper });
+
+        await createDrone(new FormData());
+
+        expect(spy).toHaveBeenCalled();
+      });
+    });
+
+    describe("When it is called with wrong form data", () => {
+      beforeEach(() => {
+        server.resetHandlers(...errorHandlers);
+      });
+      test("Then it should call the dispatch with the loadMoadlAction creator, isError true and the modal mesage of 'The drone couldn't be created'", async () => {
+        const {
+          result: {
+            current: { createDrone },
+          },
+        } = renderHook(() => useDrones(), { wrapper: Wrapper });
+
+        await createDrone(new FormData());
+
+        expect(spy).toHaveBeenCalledWith(
+          showModalActionCreator({
+            isError: true,
+            modal: "The drone couldn't be created.",
+          })
+        );
+      });
+    });
+  });
 });

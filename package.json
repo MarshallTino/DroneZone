@@ -14,6 +14,7 @@
     "@types/react-dom": "^18.0.11",
     "bootstrap": "^5.2.3",
     "jwt-decode": "^3.1.2",
+    "msw": "^1.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-burger-menu": "^3.0.9",
@@ -61,7 +62,6 @@
     "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0",
     "lint-staged": "^13.1.2",
-    "msw": "^1.1.0",
     "prettier": "^2.8.4"
   },
   "jest": {
