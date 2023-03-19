@@ -32,7 +32,11 @@ button {
 }
 
 h1,h2,h3{margin:0}
-
+button, input {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+  }
 
 `;
 export default GlobalStyles;
