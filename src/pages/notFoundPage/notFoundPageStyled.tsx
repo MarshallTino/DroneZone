@@ -38,7 +38,7 @@ const NotFoundPageStyled = styled.div`
       font-family: "Nunito sans";
       font-weight: 900;
       font-size: 20px;
-      color: ${(props) => props.theme.colors.mainLight};
+      color: ${(props) => props.theme.colors.mainDark};
       border-radius: 8px;
     }
   }

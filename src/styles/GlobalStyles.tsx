@@ -9,7 +9,9 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
 }
-
+textarea:focus, input:focus{
+    outline: none;
+}
 body{
   padding:10px;
 font-family: "Nunito sans";
@@ -32,7 +34,11 @@ button {
 }
 
 h1,h2,h3{margin:0}
-
+button, input {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+  }
 
 `;
 export default GlobalStyles;

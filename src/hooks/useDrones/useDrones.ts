@@ -77,8 +77,8 @@ const useDrones = () => {
 
   const deleteDrone = useCallback(
     async (drone: DroneStructure) => {
+      dispatch(resetModalActionCreator());
       try {
-        dispatch(resetModalActionCreator());
         dispatch(setIsLoadingActionCreator());
 
         const response = await fetch(`${apiUrl}/drones/delete/${drone.id}`, {
@@ -109,19 +109,22 @@ const useDrones = () => {
 
   const createDrone = useCallback(
     async (drone: FormData) => {
+      dispatch(resetModalActionCreator());
+      dispatch(setIsLoadingActionCreator());
       try {
-        dispatch(resetModalActionCreator());
-        dispatch(setIsLoadingActionCreator());
         const response = await fetch(`${apiUrl}/drones/create-drone`, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-type": "multipart/form-data",
           },
-          body: { ...drone },
+          body: drone,
         });
 
         const createdDrone = (await response.json()) as CreateDroneResponse;
+
+        if (!response.ok) {
+          throw new Error("The Drone couldn't be created.");
+        }
 
         dispatch(createDroneActionCreator(createdDrone.drone));
         dispatch(unSetIsLoadingActionCreator());
