@@ -9,7 +9,9 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
 }
-
+textarea:focus, input:focus{
+    outline: none;
+}
 body{
   padding:10px;
 font-family: "Nunito sans";

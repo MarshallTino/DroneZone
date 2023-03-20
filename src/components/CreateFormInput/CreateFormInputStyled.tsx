@@ -10,7 +10,7 @@ const CreateFormInputStyled = styled.div`
   gap: 15px;
 
   input[type="file"] {
-    color: transparent;
+    visibility: hidden;
   }
 
   .input-container {
@@ -39,11 +39,14 @@ const CreateFormInputStyled = styled.div`
     &__input {
       height: 100%;
       width: 80%;
+      border: 0px solid;
       background-color: ${(props) => props.theme.colors.mainDark};
       color: ${(props) => props.theme.colors.base};
-
       text-align: end;
     }
+  }
+  .input__icon {
+    fill: ${(props) => props.theme.colors.mainLight};
   }
 `;
 
