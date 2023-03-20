@@ -11,3 +11,14 @@ export const showErrorToast = (message: string) => {
     theme: "dark",
   });
 };
+
+export const showSuccessToast = (message: string) => {
+  toast.success(message, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    progress: undefined,
+    theme: "dark",
+  });
+};

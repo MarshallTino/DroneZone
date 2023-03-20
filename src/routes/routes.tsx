@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import CreateDronePage from "../pages/homePage/createDronePage/createDronePage";
 import HomePage from "../pages/homePage/homePage";
 import LoginPage from "../pages/loginPage/loginPage";
 import MyProfilePage from "../pages/myProfilePage/myProfilePage";
@@ -18,6 +19,10 @@ const routes: RouteObject[] = [
       {
         path: "/myProfile",
         element: <ProtectedRoute element={<MyProfilePage />} />,
+      },
+      {
+        path: "/createDrone",
+        element: <ProtectedRoute element={<CreateDronePage />} />,
       },
     ],
   },

@@ -28,8 +28,8 @@ const BurgerMenu = (): JSX.Element => {
         <Link className="menu-item" to={"/"} onClick={closeMenu}>
           Explore Schemas
         </Link>
-        <Link className="menu-item" to={"/"} onClick={closeMenu}>
-          Create a Schema
+        <Link className="menu-item" to={"/createDrone"} onClick={closeMenu}>
+          Create a Drone Schema
         </Link>
         <Link className="menu-item" to={"/myProfile"} onClick={closeMenu}>
           My Profile

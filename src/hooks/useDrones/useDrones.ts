@@ -126,6 +126,12 @@ const useDrones = () => {
           throw new Error("The Drone couldn't be created.");
         }
 
+        dispatch(
+          showModalActionCreator({
+            isError: false,
+            modal: "The drone has been created.",
+          })
+        );
         dispatch(createDroneActionCreator(createdDrone.drone));
         dispatch(unSetIsLoadingActionCreator());
       } catch (error) {

@@ -27,6 +27,7 @@ const CreateFormInputStyled = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
       height: 60px;
       border: 2px solid ${(props) => props.theme.colors.base};
@@ -38,15 +39,19 @@ const CreateFormInputStyled = styled.div`
 
     &__input {
       height: 100%;
-      width: 80%;
+      width: 70%;
       border: 0px solid;
       background-color: ${(props) => props.theme.colors.mainDark};
-      color: ${(props) => props.theme.colors.base};
+      color: ${(props) => props.theme.colors.mainLight};
       text-align: end;
     }
   }
   .input__icon {
     fill: ${(props) => props.theme.colors.mainLight};
+  }
+
+  .input__icon path {
+    width: 100%;
   }
 `;
 
