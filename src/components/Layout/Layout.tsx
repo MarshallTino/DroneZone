@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { showErrorToast } from "../../modals/modals";
+import { showErrorToast, showSuccessToast } from "../../modals/modals";
 import { useAppSelector } from "../../store/hooks";
 import Header from "../Header/Header";
 import Loader from "../Loader/Loader";
@@ -9,11 +9,12 @@ import Loader from "../Loader/Loader";
 const Layout = (): JSX.Element => {
   const { isLoading } = useAppSelector((state) => state.ui);
   const { modal } = useAppSelector((state) => state.ui);
+  const { isError } = useAppSelector((state) => state.ui);
   useEffect(() => {
     if (modal) {
-      showErrorToast(modal);
+      isError ? showErrorToast(modal) : showSuccessToast(modal);
     }
-  }, [modal]);
+  }, [isError, modal]);
   return (
     <>
       <Header />

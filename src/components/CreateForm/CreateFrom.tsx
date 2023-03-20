@@ -147,14 +147,14 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Quantity"
           name="motorQuantity"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
 
         <FormGroupInput
           label="Price per Motor"
           name="motorPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -184,7 +184,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="framePricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -207,14 +207,14 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Quantity"
           name="escQuantity"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
 
         <FormGroupInput
           label="Price per unit"
           name="escPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -244,7 +244,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="cameraPircePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -281,7 +281,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="vtxPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -304,7 +304,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Quantity"
           name="propellerQuantity"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
 
@@ -318,7 +318,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="propellerPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -348,7 +348,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="controllerPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -385,7 +385,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="batteryPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -422,7 +422,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="receiverPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>
@@ -452,7 +452,7 @@ const CreateForm = (): JSX.Element => {
         <FormGroupInput
           label="Price"
           name="vtxAntennaPricePerUnit"
-          type="text"
+          type="number"
           onChange={handleInputChange}
         />
       </FormGroupInputs>

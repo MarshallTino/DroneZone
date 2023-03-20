@@ -31,4 +31,23 @@ describe("Given a layout component", () => {
       expect(modal).toBeInTheDocument();
     });
   });
+
+  describe("When the user creates a drone", () => {
+    test("Then it should show a modal with the text 'Drone Created Successfully'", async () => {
+      await renderRouterWithProviders(
+        {
+          ui: {
+            isError: false,
+            modal: "Drone Created Successfully",
+            isLoading: false,
+          },
+        },
+        <Layout />
+      );
+
+      const modal = await screen.findByText("Drone Created Successfully");
+
+      expect(modal).toBeInTheDocument();
+    });
+  });
 });
