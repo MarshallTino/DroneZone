@@ -12,7 +12,7 @@ describe("Given a droneComponentCardlist", () => {
           drones: { drone: mockedDrone, drones: [] },
           user: { email: "", id: "", isLogged: true, token: "" },
         },
-        <DroneComponentCardList />
+        <DroneComponentCardList drone={mockedDrone} />
       );
 
       const droneComponentCard = screen.getByRole("heading", { name: "Motor" });

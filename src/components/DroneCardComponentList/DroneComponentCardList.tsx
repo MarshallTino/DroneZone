@@ -1,12 +1,21 @@
-import { useAppSelector } from "../../store/hooks";
+import { DroneStructure } from "../../store/features/dronesSlice/types";
 import DroneComponentCard from "../droneComponentCard/droneComponentCard";
 import DroneComponentCardProperty from "../DroneComponentCardProperty/DroneComponentCardproperty";
 import DroneComponentCardListStyled from "./DroneComponentCardListStyled";
 
-const DroneComponentCardList = (): JSX.Element => {
-  const drone = useAppSelector((state) => state.drones.drone);
+interface DroneComponentCardListProps {
+  drone: DroneStructure;
+}
+
+const DroneComponentCardList = ({
+  drone,
+}: DroneComponentCardListProps): JSX.Element => {
   return (
     <DroneComponentCardListStyled>
+      <div className="componentCard-list__title-container">
+        <h2 className="componentCard-list__title">Drone Components</h2>
+      </div>
+
       <DroneComponentCard name={"Motor"} component={drone.components.motor}>
         <DroneComponentCardProperty
           propertyTitle="Quantity"
