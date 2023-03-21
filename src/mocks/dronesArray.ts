@@ -2,7 +2,7 @@ import { Drones, DroneStructure } from "../store/features/dronesSlice/types";
 
 export const mockedDrones: Drones = [
   {
-    id: "d4435dwadawd345",
+    id: "640f22ef6dc189aa4e9462f4",
 
     droneImage:
       "https://th.bing.com/th/id/OIP.L46JYLdCW8gDEzEjMqAcJgHaHa?pid=ImgDet&rs=1",

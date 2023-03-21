@@ -1,4 +1,4 @@
-import { mockedDrones } from "../../mocks/dronesArray";
+import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
 import { DronesState } from "../../store/features/dronesSlice/types";
 
 export const preloadedStateLoggedIn = {
@@ -20,4 +20,5 @@ export const preloadedStateLoading = {
 
 export const preloadedStateDrones: DronesState = {
   drones: mockedDrones,
+  drone: mockedDrone,
 };

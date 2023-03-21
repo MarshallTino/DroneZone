@@ -38,6 +38,10 @@ export interface DroneStructure {
   };
 }
 
+export interface DroneByIdResponse {
+  drone: DroneStructure;
+}
+
 export type Drones = DroneStructure[];
 
 export interface ApiResponse {
@@ -50,4 +54,5 @@ export interface UserDronesResponse {
 
 export interface DronesState {
   drones: Drones;
+  drone: DroneStructure;
 }
