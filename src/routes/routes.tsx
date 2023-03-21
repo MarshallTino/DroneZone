@@ -2,6 +2,7 @@ import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import CreateDronePage from "../pages/createDronePage/createDronePage";
+import DetailPage from "../pages/detailPage/detailPage";
 import HomePage from "../pages/homePage/homePage";
 import LoginPage from "../pages/loginPage/loginPage";
 import MyProfilePage from "../pages/myProfilePage/myProfilePage";
@@ -23,6 +24,10 @@ const routes: RouteObject[] = [
       {
         path: "/createDrone",
         element: <ProtectedRoute element={<CreateDronePage />} />,
+      },
+      {
+        path: "/detailed-drone/:id",
+        element: <ProtectedRoute element={<DetailPage />} />,
       },
     ],
   },

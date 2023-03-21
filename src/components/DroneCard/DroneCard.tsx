@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import useDrones from "../../hooks/useDrones/useDrones";
 import { DroneStructure } from "../../store/features/dronesSlice/types";
 import { useAppSelector } from "../../store/hooks";
@@ -11,10 +12,13 @@ export interface DroneCardProps {
 export const DroneCard = ({ drone }: DroneCardProps): JSX.Element => {
   const { deleteDrone } = useDrones();
   const userID = useAppSelector((state) => state.user.id);
+  const navigate = useNavigate();
   const isMyDrone = userID === drone.creator;
+
   return (
     <DroneCardStyled className="drone-card">
       <img
+        onClick={() => navigate(`/detailed-drone/${drone.id}`)}
         className="drone-card__image"
         width="350"
         height="320"
