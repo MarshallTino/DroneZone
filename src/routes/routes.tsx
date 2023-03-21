@@ -1,7 +1,7 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
-import CreateDronePage from "../pages/homePage/createDronePage/createDronePage";
+import CreateDronePage from "../pages/createDronePage/createDronePage";
 import HomePage from "../pages/homePage/homePage";
 import LoginPage from "../pages/loginPage/loginPage";
 import MyProfilePage from "../pages/myProfilePage/myProfilePage";
