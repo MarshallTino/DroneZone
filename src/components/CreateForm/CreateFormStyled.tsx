@@ -9,7 +9,7 @@ const CreateFormStyled = styled.form`
   .form__submit-button {
     width: 100%;
     background-color: ${(props) => props.theme.colors.base};
-    color: ${(props) => props.theme.colors.mainLight};
+    color: ${(props) => props.theme.colors.mainDark};
     padding: 15px;
     font-weight: 700;
     font-size: 25px;

@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { mockedDrones } from "./dronesArray";
+import { mockedDrone, mockedDrones } from "./dronesArray";
 
 const routes = {
   user: "/user",
@@ -23,6 +23,7 @@ export const getUserDronesEmpty = [
     }
   ),
 ];
+
 export const handlers = [
   rest.post(`${apiUrl}${routes.user}${routes.login}`, async (req, res, ctx) => {
     return res(
@@ -43,10 +44,14 @@ export const handlers = [
     );
   }),
   rest.delete(
-    `${apiUrl}${routes.drones}/delete/d4435dwadawd345`,
+    `${apiUrl}${routes.drones}/delete/640f22ef6dc189aa4e9462f4`,
     async (req, res, ctx) => {
       return res(ctx.status(200));
     }
+  ),
+  rest.get(
+    `${apiUrl}${routes.drones}/detailDrone/640f22ef6dc189aa4e9462f4`,
+    (req, res, ctx) => res(ctx.status(200), ctx.json({ drone: mockedDrone }))
   ),
 ];
 
@@ -59,9 +64,13 @@ export const errorHandlers = [
   }),
 
   rest.delete(
-    `${apiUrl}${routes.drones}/delete/d4435dwadawd345`,
+    `${apiUrl}${routes.drones}/delete/640f22ef6dc189aa4e9462f4`,
     async (req, res, ctx) => {
       return res(ctx.status(500));
     }
+  ),
+  rest.get(
+    `${apiUrl}${routes.drones}/detailDrone/640f22ef6dc189aa4e9462f4`,
+    (req, res, ctx) => res(ctx.status(400))
   ),
 ];
