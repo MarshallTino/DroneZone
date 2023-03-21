@@ -53,6 +53,9 @@ export const handlers = [
     `${apiUrl}${routes.drones}/detailDrone/640f22ef6dc189aa4e9462f4`,
     (req, res, ctx) => res(ctx.status(200), ctx.json({ drone: mockedDrone }))
   ),
+  rest.get(`${apiUrl}${routes.drones}${routes.userDrones}`, (req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ drone: mockedDrone }))
+  ),
 ];
 
 export const errorHandlers = [

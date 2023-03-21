@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
@@ -20,7 +20,9 @@ const Layout = (): JSX.Element => {
       <Header />
       <main>
         {isLoading && <Loader />}
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
       <ToastContainer />
     </>

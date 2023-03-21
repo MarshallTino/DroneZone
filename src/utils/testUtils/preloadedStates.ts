@@ -14,6 +14,10 @@ export const preloadedStateModal = {
   ui: { modal: "Invalid credentials", isError: true, isLoading: false },
 };
 
+export const preloadedStateModalReset = {
+  ui: { modal: "", isError: false, isLoading: false },
+};
+
 export const preloadedStateLoading = {
   ui: { isLoading: true, isError: false, modal: "" },
 };
