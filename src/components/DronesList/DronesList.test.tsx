@@ -1,10 +1,7 @@
 import { screen } from "@testing-library/react";
 import DronesList from "./DronesList";
 import "@testing-library/jest-dom";
-import {
-  preloadedStateDrones,
-  preloadedStateLoggedIn,
-} from "../../utils/testUtils/preloadedStates";
+import { preloadedStateLoggedIn } from "../../utils/testUtils/preloadedStates";
 import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
 

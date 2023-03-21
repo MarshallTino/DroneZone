@@ -19,6 +19,9 @@ const DroneComponentCardPropertyStyled = styled.div`
     font-size: 16px;
     font-weight: 600;
     color: ${(props) => props.theme.colors.base};
+    text-align: end;
+    font-size: 14px;
+    max-width: 150px;
   }
 `;
 

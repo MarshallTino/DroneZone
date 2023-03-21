@@ -49,7 +49,7 @@ const DetailDroneInfoStyled = styled.div`
 
   .difficulty {
     background-color: orange;
-    color: ${(props) => props.theme.colors.mainLight};
+    color: ${(props) => props.theme.colors.mainDark};
   }
   .droneClass {
     background-color: ${(props) => props.theme.colors.base};
