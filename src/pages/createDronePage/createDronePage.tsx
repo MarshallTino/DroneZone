@@ -1,4 +1,4 @@
-import CreateForm from "../../../components/CreateForm/CreateFrom";
+import CreateForm from "../../components/CreateForm/CreateFrom";
 import CreateDronePageStyled from "./createDronePageStyled";
 
 const CreateDronePage = (): JSX.Element => {

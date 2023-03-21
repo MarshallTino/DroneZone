@@ -5,8 +5,8 @@ import CreateDronePage from "./createDronePage";
 import {
   preloadedStateDrones,
   preloadedStateLoggedIn,
-} from "../../../utils/testUtils/preloadedStates";
-import { renderRouterWithProviders } from "../../../utils/testUtils/renderWithProviders";
+} from "../../utils/testUtils/preloadedStates";
+import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 
 describe("Given a createDronePAge", () => {
   describe("When it is rendered", () => {
