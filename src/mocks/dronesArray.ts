@@ -6,7 +6,8 @@ export const mockedDrones: Drones = [
 
     droneImage:
       "https://th.bing.com/th/id/OIP.L46JYLdCW8gDEzEjMqAcJgHaHa?pid=ImgDet&rs=1",
-    schemaImage: "https://example.com/drone-schema3.jpg",
+    schemaImage:
+      "https://th.bing.com/th/id/OIP.L46JYLdCW8gDEzEjMqAcJgHaHa?pid=ImgDet&rs=1",
     creator: "640729e2304c8728da0a679a",
     creatorName: "MarshallTino",
 
