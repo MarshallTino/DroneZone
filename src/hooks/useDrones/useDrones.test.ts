@@ -1,7 +1,12 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import { mockedDrone, mockedDrones } from "../../mocks/dronesArray";
-import { errorHandlers, getUserDronesEmpty } from "../../mocks/handlers";
+import {
+  errorHandlers,
+  getUserDronesEmpty,
+  handlers,
+} from "../../mocks/handlers";
 import { server } from "../../mocks/server";
+import { loadDroneActionCreator } from "../../store/features/dronesSlice/dronesSlice";
 import { showModalActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../utils/testUtils/Wrapper";
@@ -11,26 +16,56 @@ beforeAll(() => {
   jest.clearAllMocks();
 });
 
-const spy = jest.spyOn(store, "dispatch");
-
-describe("When its getUserDrones function is called and responds with an empty array", () => {
-  test("Then the showModalaction should be called", async () => {
-    server.use(...getUserDronesEmpty);
-
-    const {
-      result: {
-        current: { getUserDrones },
-      },
-    } = renderHook(() => useDrones(), { wrapper: Wrapper });
-
-    await getUserDrones();
-    expect(spy).toHaveBeenCalled();
-  });
+beforeEach(() => {
+  jest.clearAllMocks();
 });
 
+const spy = jest.spyOn(store, "dispatch");
+
 describe("Given a useDrones hook", () => {
+  describe("Given a useDrones hook and the findDroneById function", () => {
+    describe("When the findDroneById is called", () => {
+      test("Then it should call the loadEvent dispatch", async () => {
+        server.use(...handlers);
+        const {
+          result: {
+            current: { findDroneById },
+          },
+        } = renderHook(() => useDrones(), { wrapper: Wrapper });
+        await act(async () => await findDroneById("640f22ef6dc189aa4e9462f4"));
+
+        expect(spy).toHaveBeenNthCalledWith(
+          4,
+          loadDroneActionCreator(mockedDrone)
+        );
+      });
+    });
+
+    describe("When the response respond with an error", () => {
+      test("Then it should call the openModal action creator with an error", async () => {
+        server.use(...errorHandlers);
+        const {
+          result: {
+            current: { findDroneById },
+          },
+        } = renderHook(() => useDrones(), { wrapper: Wrapper });
+
+        await findDroneById(mockedDrone.id);
+
+        expect(spy).toHaveBeenNthCalledWith(
+          4,
+          showModalActionCreator({
+            isError: true,
+            modal: "No Drone found.",
+          })
+        );
+      });
+    });
+  });
+
   describe("When its getDrones function is called", () => {
     test("Then the loadDronesAction of the dronesSlice should be called", async () => {
+      server.resetHandlers(...handlers);
       const {
         result: {
           current: { getDrones },
@@ -60,6 +95,21 @@ describe("Given a useDrones hook", () => {
     });
   });
 
+  describe("When its getUserDrones function is called and responds with an empty array", () => {
+    test("Then the showModalaction should be called", async () => {
+      server.use(...getUserDronesEmpty);
+
+      const {
+        result: {
+          current: { getUserDrones },
+        },
+      } = renderHook(() => useDrones(), { wrapper: Wrapper });
+
+      await getUserDrones();
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
   describe("When its deleteDrone function is called", () => {
     test("Then the loadDronesAction of the dronesSlice should be called", async () => {
       const {
@@ -69,7 +119,7 @@ describe("Given a useDrones hook", () => {
       } = renderHook(() => useDrones(), { wrapper: Wrapper });
 
       await deleteDrone(mockedDrone);
-      expect(spy).toHaveBeenNthCalledWith(4, {
+      expect(spy).toHaveBeenNthCalledWith(5, {
         payload: mockedDrone,
         type: "drones/deleteDrones",
       });
@@ -87,7 +137,10 @@ describe("Given a useDrones hook", () => {
       } = renderHook(() => useDrones(), { wrapper: Wrapper });
 
       await deleteDrone(mockedDrone);
-      expect(spy).not.toHaveBeenCalledWith({ drones: mockedDrone });
+      expect(spy).not.toHaveBeenCalledWith({
+        drones: mockedDrone,
+        drone: mockedDrone,
+      });
     });
   });
 
@@ -159,9 +212,8 @@ describe("Given a useDrones hook", () => {
     });
 
     describe("When it is called with wrong form data", () => {
-      beforeEach(() => {
-        server.resetHandlers(...errorHandlers);
-      });
+      server.resetHandlers(...errorHandlers);
+
       test("Then it should call the dispatch with the loadMoadlAction creator, isError true and the modal mesage of 'The drone couldn't be created'", async () => {
         const {
           result: {

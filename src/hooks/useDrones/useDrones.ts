@@ -2,10 +2,12 @@ import { useCallback } from "react";
 import {
   createDroneActionCreator,
   deleteDronesActionCreator,
+  loadDroneActionCreator,
   loadDronesActionCreator,
 } from "../../store/features/dronesSlice/dronesSlice";
 import {
   ApiResponse,
+  DroneByIdResponse,
   DroneStructure,
   UserDronesResponse,
 } from "../../store/features/dronesSlice/types";
@@ -93,6 +95,12 @@ const useDrones = () => {
         }
 
         dispatch(unSetIsLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: false,
+            modal: "Drone Deleted Succesfully",
+          })
+        );
         dispatch(deleteDronesActionCreator(drone));
       } catch (error) {
         dispatch(unSetIsLoadingActionCreator());
@@ -147,7 +155,44 @@ const useDrones = () => {
     [dispatch, token]
   );
 
-  return { getUserDrones, getDrones, deleteDrone, createDrone };
+  const findDroneById = useCallback(
+    async (droneId: string) => {
+      dispatch(resetModalActionCreator());
+
+      try {
+        dispatch(setIsLoadingActionCreator());
+        const response = await fetch(
+          `${apiUrl}/drones/detailDrone/${droneId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("We couldn't retrieve Drones. Try again!");
+        }
+
+        const { drone } = (await response.json()) as DroneByIdResponse;
+
+        dispatch(unSetIsLoadingActionCreator());
+        dispatch(loadDroneActionCreator(drone));
+      } catch (error) {
+        dispatch(unSetIsLoadingActionCreator());
+        dispatch(
+          showModalActionCreator({
+            isError: true,
+            modal: "No Drone found.",
+          })
+        );
+      }
+    },
+    [dispatch, token]
+  );
+
+  return { getUserDrones, getDrones, deleteDrone, createDrone, findDroneById };
 };
 
 export default useDrones;
