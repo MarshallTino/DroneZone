@@ -17,7 +17,7 @@ const DetailImageContainerStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px 15px;
+    padding: 0px 10px;
     height: 69px;
     border-radius: 5px;
     width: 100%;
