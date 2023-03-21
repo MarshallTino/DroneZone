@@ -3,10 +3,10 @@ import { DronesState } from "../../store/features/dronesSlice/types";
 
 export const preloadedStateLoggedIn = {
   user: {
-    email: "",
-    id: "",
+    email: "marcelmartino2053@gmail.com",
+    id: "640729e2304c8728da0a679a",
     isLogged: true,
-    token: "",
+    token: "8459w88468a49848488dwd",
   },
 };
 

@@ -2,21 +2,24 @@ import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { mockedDrone } from "../../mocks/dronesArray";
 import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
-import DroneComponentCardList from "./DroneComponentCardList";
+import DetailImageContainer from "./DetailImageContainer";
 
-describe("Given a droneComponentCardlist", () => {
+describe("Given a DetailImageContainer", () => {
   describe("When it is rendered", () => {
-    test("Then it should render a droneComponentCard", () => {
+    test("Then it should render a droneImage", () => {
       renderRouterWithProviders(
         {
           drones: { drone: mockedDrone, drones: [] },
           user: { email: "", id: "", isLogged: true, token: "" },
         },
-        <DroneComponentCardList drone={mockedDrone} />
+        <DetailImageContainer
+          droneImage={mockedDrone.droneImage}
+          schemaImage={mockedDrone.schemaImage}
+        />
       );
 
-      const droneComponentCard = screen.getByRole("heading", { name: "Motor" });
-      expect(droneComponentCard).toBeInTheDocument();
+      const droneImage = screen.getByRole("img", { name: "drone schema" });
+      expect(droneImage).toBeInTheDocument();
     });
   });
 });

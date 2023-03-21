@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import useDrones from "../../hooks/useDrones/useDrones";
 import { DroneStructure } from "../../store/features/dronesSlice/types";
 import { useAppSelector } from "../../store/hooks";
@@ -11,10 +12,13 @@ export interface DroneCardProps {
 export const DroneCard = ({ drone }: DroneCardProps): JSX.Element => {
   const { deleteDrone } = useDrones();
   const userID = useAppSelector((state) => state.user.id);
+  const navigate = useNavigate();
   const isMyDrone = userID === drone.creator;
+
   return (
     <DroneCardStyled className="drone-card">
       <img
+        onClick={() => navigate(`/detailed-drone/${drone.id}`)}
         className="drone-card__image"
         width="350"
         height="320"
@@ -31,21 +35,21 @@ export const DroneCard = ({ drone }: DroneCardProps): JSX.Element => {
         />
       )}
       <div className="properties">
-        <span className="properties__container">
+        <div className="properties__container">
           <h2 className="properties__title">Level</h2>
           <h3 className="properties__value">{drone.categories.difficulty}</h3>
-        </span>
-        <span className="properties__container">
+        </div>
+        <div className="properties__container">
           <h2 className="properties__title">Class</h2>
           <h3 className="properties__value">{drone.categories.droneClass}</h3>
-        </span>
+        </div>
 
-        <span className="properties__container">
+        <div className="properties__container">
           <h1 className="properties__title">Transmission</h1>
           <h2 className="properties__value">
             {drone.categories.transmissionType}
           </h2>
-        </span>
+        </div>
       </div>
       <div className="creator">
         <h2 className="creator__title">Created by </h2>

@@ -14,7 +14,6 @@ const DroneComponentCardStyled = styled.div`
 
   .component-card {
     &__image {
-      object-fit: cover;
       border-radius: 8px;
     }
 
@@ -33,7 +32,7 @@ const DroneComponentCardStyled = styled.div`
     padding: 4px 12px;
     background-color: ${(props) => props.theme.colors.base};
     border-radius: 8px;
-    color: ${(props) => props.theme.colors.mainLight};
+    color: ${(props) => props.theme.colors.mainDark};
     text-align: center;
   }
 `;

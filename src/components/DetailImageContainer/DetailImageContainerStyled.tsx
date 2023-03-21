@@ -1,23 +1,29 @@
 import styled from "styled-components";
 
-const DroneComponentCardListStyled = styled.div`
+const DetailImageContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 20px;
+  padding: 0px 15px 15px;
+  gap: 10px;
+  background-color: ${(props) => props.theme.colors.mainDark};
+  width: 100%;
+  border-radius: 5px;
 
-  .componentCard-list__title-container {
+  .image-container__title-container {
     background-color: ${(props) => props.theme.colors.mainDark};
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0px 15px;
+    padding: 0px 10px;
     height: 69px;
     border-radius: 5px;
     width: 100%;
+    margin-bottom: 10px;
   }
-  .componentCard-list__title {
+  .image-container__title {
     padding-top: 15px;
     color: ${(props) => props.theme.colors.mainLight};
     font-size: 28px;
@@ -28,6 +34,11 @@ const DroneComponentCardListStyled = styled.div`
     text-align: center;
     border-bottom: 3px solid ${(props) => props.theme.colors.base};
   }
-`;
 
-export default DroneComponentCardListStyled;
+  .image-container__image {
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+  }
+`;
+export default DetailImageContainerStyled;
