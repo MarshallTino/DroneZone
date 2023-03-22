@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import LoginFormStyled from "./LoginFormStyled";
@@ -36,7 +37,12 @@ const LoginForm = (): JSX.Element => {
         />
         <Button className="login__button" text="Sign In" disabled={false} />
       </form>
-      <span className="login__message">Don't have an account? Sign Up.</span>
+      <span className="login__message">
+        Don't have an account?{" "}
+        <Link to="/register" className="login__link">
+          Register
+        </Link>
+      </span>
     </LoginFormStyled>
   );
 };

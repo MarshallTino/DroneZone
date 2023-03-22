@@ -35,6 +35,11 @@ export const handlers = [
       })
     );
   }),
+
+  rest.post(`${apiUrl}${routes.user}/register`, async (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+
   rest.get(`${apiUrl}${routes.drones}`, async (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -62,6 +67,10 @@ export const handlers = [
 export const errorHandlers = [
   rest.post(`${apiUrl}${routes.user}${routes.login}`, async (req, res, ctx) => {
     return res(ctx.status(401));
+  }),
+
+  rest.post(`${apiUrl}${routes.user}/register`, async (req, res, ctx) => {
+    return res(ctx.status(400));
   }),
   rest.get(`${apiUrl}/drones`, async (req, res, ctx) => {
     return res(ctx.status(401));

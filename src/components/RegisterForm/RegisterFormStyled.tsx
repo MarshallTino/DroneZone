@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.div`
+const RegisterFormStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,7 +10,7 @@ const LoginFormStyled = styled.div`
   background-color: ${(props) => props.theme.colors.mainDark};
   padding: 20px;
   border-radius: 5px;
-  .login {
+  .register {
     &__form {
       display: flex;
       flex-direction: column;
@@ -59,4 +59,4 @@ const LoginFormStyled = styled.div`
     }
   }
 `;
-export default LoginFormStyled;
+export default RegisterFormStyled;

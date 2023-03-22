@@ -3,7 +3,7 @@ import decodeToken from "jwt-decode";
 import Wrapper from "../../utils/testUtils/Wrapper";
 import { User } from "../../store/features/user/types";
 import { loginUserActionCreator } from "../../store/features/user/userSlice";
-import { CustomTokenPayload, UserCredentials } from "./types";
+import { CustomTokenPayload, UserCredentials, UserRegisterData } from "./types";
 import useUser from "./useUser";
 import { store } from "../../store/store";
 import { server } from "../../mocks/server";
@@ -17,6 +17,13 @@ beforeAll(() => {
 afterEach(() => {
   jest.clearAllMocks();
 });
+
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockUseNavigate,
+}));
 
 const spy = jest.spyOn(store, "dispatch");
 
@@ -32,6 +39,12 @@ const mockTokenPayload: CustomTokenPayload = {
 const userCredentials: UserCredentials = {
   email: "marcelmartino2053@gmail.com",
   password: "MarshallTino",
+};
+
+const mockUserRegister: UserRegisterData = {
+  email: "marshalltinooo@gmail.com",
+  password: "AISjdiwja",
+  username: "patatafrita",
 };
 
 describe("Given a useUser hook", () => {
@@ -100,5 +113,68 @@ describe("Given a useUser hook", () => {
 
       expect(spy).toHaveBeenCalled();
     });
+  });
+});
+
+describe("When the registerUser function is called with the username: 'patatafrita', email: 'marshalltinooo@gmail.com' and password: 'aedawdawdawd'", () => {
+  test("Then it should call the dispatch showModalAction", async () => {
+    const {
+      result: {
+        current: { registerUser },
+      },
+    } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+    await registerUser(mockUserRegister);
+
+    expect(spy).toHaveBeenCalledWith(
+      showModalActionCreator({
+        isError: false,
+        modal: "The user has been created!",
+      })
+    );
+  });
+
+  test("Then it should call the dispatch for succes toast", async () => {
+    const modalPayload = {
+      isError: false,
+      modal: "The user has been created!",
+    };
+
+    const {
+      result: {
+        current: { registerUser },
+      },
+    } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+    await registerUser(mockUserRegister);
+
+    expect(spy).toHaveBeenCalledWith(showModalActionCreator(modalPayload));
+  });
+});
+
+describe("When the response is not ok", () => {
+  beforeAll(() => {
+    server.resetHandlers(...errorHandlers);
+  });
+
+  test("Then it should throw an error", async () => {
+    const modalPayload = {
+      isError: true,
+      modal: "Couldn't create user. Try again!",
+    };
+
+    const {
+      result: {
+        current: { registerUser },
+      },
+    } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+    await registerUser({
+      email: "",
+      username: "",
+      password: "",
+    });
+
+    expect(spy).toHaveBeenCalledWith(showModalActionCreator(modalPayload));
   });
 });

@@ -3,10 +3,7 @@ import * as ReactRouterDom from "react-router-dom";
 import LoginPage from "./loginPage";
 import "@testing-library/jest-dom/extend-expect";
 import "react-router-dom";
-import {
-  renderRouterWithProviders,
-  renderWithProviders,
-} from "../../utils/testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 import { preloadedStateLoggedIn } from "../../utils/testUtils/preloadedStates";
 
 jest.mock("react-router-dom", () => ({
@@ -19,7 +16,7 @@ describe("Given a LoginPage page", () => {
     test("Then it should show a button with text: 'Sign In'", () => {
       const expectResult = "Sign In";
 
-      renderWithProviders(<LoginPage />);
+      renderRouterWithProviders({}, <LoginPage />);
 
       const result = screen.getByRole("button", { name: expectResult });
 

@@ -65,4 +65,19 @@ describe("Given the router", () => {
       expect(myProfileTitle).toBeInTheDocument();
     });
   });
+
+  describe("When the app renders, the user isn't logged in and clicks on the Link 'Register'", () => {
+    test("Then there should be a title 'Create an Account'", async () => {
+      renderRouterWithProviders({
+        ui: { isError: false, isLoading: false, modal: "" },
+        user: { email: "", id: "", isLogged: false, token: "" },
+      });
+
+      const registerLink = await screen.findByText("Register");
+      await act(async () => await userEvent.click(registerLink));
+
+      const registerPageTitle = await screen.findByText("Create an Account");
+      expect(registerPageTitle).toBeInTheDocument();
+    });
+  });
 });
