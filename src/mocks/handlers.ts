@@ -6,6 +6,7 @@ const routes = {
   login: "/login",
   drones: "/drones",
   userDrones: "/user-drones",
+  createDrone: "/create-drone",
 };
 
 const apiUrl = process.env.REACT_APP_API_URL!;
@@ -75,5 +76,17 @@ export const errorHandlers = [
   rest.get(
     `${apiUrl}${routes.drones}/detailDrone/640f22ef6dc189aa4e9462f4`,
     (req, res, ctx) => res(ctx.status(400))
+  ),
+];
+
+export const createDroneHandler = [
+  rest.post(`${apiUrl}/drones/create-drone`, (req, res, ctx) =>
+    res(ctx.status(201), ctx.json({ drone: mockedDrone }))
+  ),
+];
+
+export const errorCreateDroneHandler = [
+  rest.post(`${apiUrl}/drones/create-drone`, (req, res, ctx) =>
+    res(ctx.status(400), ctx.json({ error: "Couldn't create the drone" }))
   ),
 ];
