@@ -23,7 +23,6 @@ const DroneComponentCardStyled = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 8px;
       align-items: center;
     }
   }

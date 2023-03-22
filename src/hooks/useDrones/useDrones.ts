@@ -115,45 +115,42 @@ const useDrones = () => {
     [dispatch, token]
   );
 
-  const createDrone = useCallback(
-    async (drone: FormData) => {
-      dispatch(resetModalActionCreator());
-      dispatch(setIsLoadingActionCreator());
-      try {
-        const response = await fetch(`${apiUrl}/drones/create-drone`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: drone,
-        });
+  const createDrone = async (droneData: FormData) => {
+    dispatch(resetModalActionCreator());
+    dispatch(setIsLoadingActionCreator());
 
-        const createdDrone = (await response.json()) as CreateDroneResponse;
+    try {
+      const response = await fetch(`${apiUrl}/drones/create-drone`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: droneData,
+      });
+      const { drone } = (await response.json()) as CreateDroneResponse;
 
-        if (!response.ok) {
-          throw new Error("The Drone couldn't be created.");
-        }
-
-        dispatch(
-          showModalActionCreator({
-            isError: false,
-            modal: "The drone has been created.",
-          })
-        );
-        dispatch(createDroneActionCreator(createdDrone.drone));
-        dispatch(unSetIsLoadingActionCreator());
-      } catch (error) {
-        dispatch(
-          showModalActionCreator({
-            isError: true,
-            modal: "The drone couldn't be created.",
-          })
-        );
-        dispatch(unSetIsLoadingActionCreator());
+      if (!response.ok) {
+        throw new Error("The Drone couldn't be created.");
       }
-    },
-    [dispatch, token]
-  );
+
+      dispatch(
+        showModalActionCreator({
+          isError: false,
+          modal: "The drone has been created.",
+        })
+      );
+      dispatch(createDroneActionCreator(drone));
+      dispatch(unSetIsLoadingActionCreator());
+    } catch (error) {
+      dispatch(
+        showModalActionCreator({
+          isError: true,
+          modal: "The drone couldn't be created.",
+        })
+      );
+      dispatch(unSetIsLoadingActionCreator());
+    }
+  };
 
   const findDroneById = useCallback(
     async (droneId: string) => {
@@ -170,7 +167,6 @@ const useDrones = () => {
             },
           }
         );
-
         if (!response.ok) {
           throw new Error("We couldn't retrieve Drones. Try again!");
         }
