@@ -13,3 +13,9 @@ export interface CustomTokenPayload extends JwtPayload {
   sub: string;
   email: string;
 }
+
+export interface UserRegisterData {
+  email: string;
+  username: string;
+  password: string;
+}

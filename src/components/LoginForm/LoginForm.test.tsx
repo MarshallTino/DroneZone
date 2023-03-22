@@ -1,11 +1,9 @@
 import { act, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import theme from "../../styles/Theme";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
 import { UserCredentials } from "../../hooks/useUser/types";
 import LoginForm from "./LoginForm";
-import { renderWithProviders } from "../../utils/testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 
 const mockLoginUser = jest.fn();
 
@@ -16,11 +14,7 @@ jest.mock("../../hooks/useUser/useUser", () => () => ({
 describe("Given a loginForm component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a heading with the title 'Sign in to your DroneZone'", () => {
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const loginFormHeading = screen.getByRole("heading", {
         name: "Sign In to your DroneZone.",
@@ -29,11 +23,7 @@ describe("Given a loginForm component", () => {
       expect(loginFormHeading).toBeInTheDocument();
     });
     test("Then it should showan input with the placeholder 'Password'", () => {
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const passwordInput = screen.getByPlaceholderText("Password");
 
@@ -41,11 +31,7 @@ describe("Given a loginForm component", () => {
     });
 
     test("Then it should show an input with the placeholder 'Email'", () => {
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const emailInput = screen.getByPlaceholderText("Email");
 
@@ -53,11 +39,7 @@ describe("Given a loginForm component", () => {
     });
 
     test("Then it should show a button with the text 'Sign In'", () => {
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const genericButton = screen.getByRole("button", {
         name: "Sign In",
@@ -71,10 +53,9 @@ describe("Given a loginForm component", () => {
     test("Then the value of the email input should be 'marcelmartino2053@gmail.com'", async () => {
       const email = "marcelmartino2053@gmail.com";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
+      renderRouterWithProviders(
+        { user: { email: "", id: "", isLogged: false, token: "" } },
+        <LoginForm />
       );
 
       const emailInput = screen.getByPlaceholderText("Email");
@@ -89,11 +70,7 @@ describe("Given a loginForm component", () => {
     test("Then the value of the password input should be 'MarshallTino'", async () => {
       const password = "MarshallTino";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const passswordInput = screen.getByPlaceholderText("Password");
 
@@ -110,11 +87,7 @@ describe("Given a loginForm component", () => {
         password: "MarshallTino",
       };
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <LoginForm />
-        </ThemeProvider>
-      );
+      renderRouterWithProviders({}, <LoginForm />);
 
       const emailInput = screen.getByPlaceholderText("Email");
       const passswordInput = screen.getByPlaceholderText("Password");

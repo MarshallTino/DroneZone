@@ -1,7 +1,7 @@
 import { act, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
-import { UserCredentials, UserRegisterData } from "../../hooks/useUser/types";
+import { UserRegisterData } from "../../hooks/useUser/types";
 import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 import RegisterForm from "./RegisterForm";
 

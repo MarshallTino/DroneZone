@@ -53,6 +53,10 @@ const LoginFormStyled = styled.div`
       padding: 10px;
       font-weight: 400;
     }
+
+    &__link {
+      color: ${(props) => props.theme.colors.base};
+    }
   }
 `;
 export default LoginFormStyled;
