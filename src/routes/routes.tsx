@@ -1,5 +1,9 @@
 import { lazy } from "react";
-import { RouteObject, createBrowserRouter } from "react-router-dom";
+import {
+  RouteObject,
+  createBrowserRouter,
+  ScrollRestoration,
+} from "react-router-dom";
 import App from "../components/App/App";
 import endpoints from "./endpoints";
 import NotFoundPage from "../pages/notFoundPage/notFoundPage";
@@ -13,7 +17,6 @@ const DetailPage = lazy(() => import("../pages/detailPage/detailPage"));
 const HomePage = lazy(() => import("../pages/homePage/homePage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
 const RegisterPage = lazy(() => import("../pages/registerPage/registerPage"));
-
 const MyProfilePage = lazy(
   () => import("../pages/myProfilePage/myProfilePage")
 );
@@ -21,7 +24,11 @@ const MyProfilePage = lazy(
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <App />,
+    element: (
+      <>
+        <App /> <ScrollRestoration />
+      </>
+    ),
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
       { path: endpoints.login, element: <LoginPage /> },

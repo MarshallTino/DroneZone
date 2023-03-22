@@ -1,8 +1,5 @@
 import { act, screen } from "@testing-library/react";
-import {
-  renderRouterWithProviders,
-  renderWithProviders,
-} from "../../utils/testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../utils/testUtils/renderWithProviders";
 import CreateForm from "./CreateFrom";
 import "@testing-library/jest-dom/extend-expect";
 import userEvent from "@testing-library/user-event";
@@ -16,7 +13,7 @@ jest.mock("../../hooks/useDrones/useDrones", () => () => ({
 describe("Given a createForm component", () => {
   describe("When it is rendered", () => {
     test("Then it should show a Create Drone Button to submit the form", () => {
-      renderWithProviders(<CreateForm />);
+      renderRouterWithProviders({}, <CreateForm />);
 
       const submitButton = screen.getByRole("button", { name: "Create Drone" });
       expect(submitButton).toBeInTheDocument();
@@ -49,7 +46,7 @@ describe("Given a createForm component", () => {
 
   describe("When its submit button is called", () => {
     test("Then it should show call the custom Hook createDrone", async () => {
-      renderWithProviders(<CreateForm />);
+      renderRouterWithProviders({}, <CreateForm />);
 
       const submitButton = screen.getByRole("button", {
         name: "Create Drone",
