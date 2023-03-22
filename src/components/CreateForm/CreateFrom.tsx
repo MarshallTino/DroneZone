@@ -6,10 +6,12 @@ import FormGroupInputs, {
 } from "../CreateFormInput/CreateFromInput";
 import { useAppSelector } from "../../store/hooks";
 import CreateFormStyled from "./CreateFormStyled";
+import { useNavigate } from "react-router-dom";
 
 const CreateForm = (): JSX.Element => {
   const creatorName = useAppSelector((state) => state.user.email);
   const { createDrone } = useDrones();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<CreateDrone>({
     droneImage: null,
     schemaImage: null,
@@ -90,6 +92,7 @@ const CreateForm = (): JSX.Element => {
       drone.append(key, value);
     });
     await createDrone(drone);
+    navigate("/");
   };
 
   return (
