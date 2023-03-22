@@ -12,6 +12,8 @@ const CreateDronePage = lazy(
 const DetailPage = lazy(() => import("../pages/detailPage/detailPage"));
 const HomePage = lazy(() => import("../pages/homePage/homePage"));
 const LoginPage = lazy(() => import("../pages/loginPage/loginPage"));
+const RegisterPage = lazy(() => import("../pages/registerPage/registerPage"));
+
 const MyProfilePage = lazy(
   () => import("../pages/myProfilePage/myProfilePage")
 );
@@ -23,6 +25,8 @@ const routes: RouteObject[] = [
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
       { path: endpoints.login, element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
+
       { path: "*", element: <NotFoundPage /> },
       {
         path: "/myProfile",
