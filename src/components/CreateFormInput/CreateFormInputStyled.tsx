@@ -39,7 +39,7 @@ const CreateFormInputStyled = styled.div`
 
     &__input {
       height: 100%;
-      width: 70%;
+      width: 60%;
       border: 0px solid;
       background-color: ${(props) => props.theme.colors.mainDark};
       color: ${(props) => props.theme.colors.mainLight};
@@ -47,11 +47,12 @@ const CreateFormInputStyled = styled.div`
     }
   }
   .input__icon {
+    width: min-content;
     fill: ${(props) => props.theme.colors.mainLight};
   }
 
   .input__icon path {
-    width: 100%;
+    min-width: 26px;
   }
 `;
 
